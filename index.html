@@ -15,6 +15,7 @@
                 animation: colorAnimationRGB 30s infinite;
                 transition: background-color 30s ease;
                 user-select: none;
+                cursor: url("default4.ico"),auto;
             }
 
             myBody {
@@ -27,6 +28,7 @@
                 justify-content: center;
                 overflow: hidden;
                 height: 100%;
+                cursor: url("default4.ico"),auto;
             }
 
             .aboutText {
@@ -116,6 +118,21 @@
             @font-face {
                 font-family: minecraft;
                 src: url("Mojangles.ttf") format("opentype");
+            }
+
+            ::-webkit-scrollbar {
+            width: 15px;
+            }
+            ::-webkit-scrollbar-track {
+            background: #00000023; 
+            }
+            ::-webkit-scrollbar-thumb {
+            background: #0000002f; 
+                border-radius:10px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+            
+            background: #00000043; 
             }
         </style>
     </head>
@@ -269,6 +286,19 @@
 
                 isModified = !isModified;
             }
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var defaultCursor = 'default4.ico';
+                var clickCursor = 'click4.ico';
+                var duration = 100;
+
+                document.body.addEventListener('click', function () {
+                    document.body.style.cursor = 'url(' + clickCursor + '), auto';
+                    setTimeout(function () {
+                        document.body.style.cursor = 'url(' + defaultCursor + '), auto';
+                    }, duration);
+                });
+            });
         </script>
     </body>
 </html>
