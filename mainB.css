@@ -1,0 +1,92 @@
+body {
+    font-family: minecraft, comic sans ms;
+    text-shadow: 2px 2px #fff3;
+    background-color: #3d3a3a;
+    user-select: none;
+    cursor: url("default4.ico"),auto;
+    color: #fff;
+}
+
+myBody {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 100%;
+    cursor: url("default4.ico"),auto;
+}
+
+.aboutText {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #fff4;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 5px 5px 16px #0006 inset;
+    transition: all 0.3s ease-in-out;
+    background: url("./noise2.png") 0px 0px repeat;
+}
+.card:hover{
+    box-shadow: 10px 10px 16px #0006 inset;
+    background: url("./noise2.png") 5px 5px repeat;
+}
+
+.card:active{
+    box-shadow: 10px 10px 16px #0006 inset;
+    background-color: #fff4;
+}
+
+.card:hover p {
+    transform: translate(5px, 5px);
+    transition: all 0.3s ease-in-out;
+}
+
+.card p{
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.line{
+    border: 2px solid #fff4;
+    box-shadow: 1px 1px 3px #fff4;
+    border-radius: 5px;
+}
+
+@font-face {
+    font-family: minecraft;
+    src: url("Mojangles.ttf") format("opentype");
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    background: #fff3; 
+}
+::-webkit-scrollbar-thumb {
+    background: #fff3; 
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+
+    background: #fff3; 
+}

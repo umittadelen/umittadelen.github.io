@@ -6,134 +6,13 @@
         <title>umittadelen</title>
 
         <link rel="icon" href="./favicon.gif" type="image/gif">
+        <script src="./builder.js"></script>
+
+        <link id="stylesheet" rel="stylesheet" href="./mainA.css">
 
         <style>
 
-            body {
-                font-family: minecraft, comic sans ms;
-                text-shadow: 2px 2px #0003;
-                animation: colorAnimationRGB 30s infinite;
-                transition: background-color 30s ease;
-                user-select: none;
-                cursor: url("default4.ico"),auto;
-            }
-
-            myBody {
-                margin: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                height: 100%;
-                cursor: url("default4.ico"),auto;
-            }
-
-            .aboutText {
-                font-size: 1.5em;
-                text-align: center;
-            }
-
-            @keyframes colorAnimationRGB {
-                0%,100% { background-color: hsl(0, 100%, 90%);}
-                16.6% { background-color: hsl(43, 100%, 88%);}
-                33.2% { background-color: hsl(61, 100%, 86%);}
-                49.8% { background-color: hsl(127, 100%, 88%);}
-                66.4% { background-color: hsl(208, 100%, 89%);}
-                83% { background-color: hsl(300, 100%, 92%);}
-            }
-
-            @keyframes colorAnimationBW {
-                0%, 100% { background-color: rgb(76, 76, 76); }
-                16.6% { background-color: rgb(151, 151, 151); }
-                33.2% { background-color: rgb(227, 227, 227); }
-                49.8% { background-color: rgb(150, 150, 150); }
-                66.4% { background-color: rgb(28, 28, 28); }
-                83% { background-color: rgb(104, 104, 104); }
-            }
-
-            #center {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                height: 100%;
-            }
-
-            .card {
-                width: 100px;
-                height: 100px;
-                margin: 20px;
-                padding: 10px;
-                background-color: #0002;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.3);
-                transition: all 0.3s ease-in-out;
-            }
-
-            .card img{
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out;
-                width: 100%;
-                height: 100%;
-                position: relative;
-                top: -100%;
-            }
-
-            .card:hover{
-                box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.3);
-                transform: translate(-5px,-5px);
-            }
-
-            .card:hover img{
-                display: block;
-                opacity: 1;
-            }
-
-            .card:hover p{
-                opacity: 0;
-            }
-
-            .card:active{
-                box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.3);
-                transform: translate(-5px,-5px);
-                background-color: #0004;
-            }
-
-            .card p{
-                font-size: 20px;
-                opacity: 1;
-                transition: opacity 0.3s ease-in-out;
-            }
-
-            .line{
-                border: 2px solid #0003;
-                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-                border-radius: 5px;
-            }
-
-            @font-face {
-                font-family: minecraft;
-                src: url("Mojangles.ttf") format("opentype");
-            }
-
-            ::-webkit-scrollbar {
-            width: 15px;
-            }
-            ::-webkit-scrollbar-track {
-            background: #00000023; 
-            }
-            ::-webkit-scrollbar-thumb {
-            background: #0000002f; 
-                border-radius:10px;
-            }
-            ::-webkit-scrollbar-thumb:hover {
             
-            background: #00000043; 
-            }
         </style>
     </head>
     <body>
@@ -145,160 +24,22 @@
             Oslo<b>/</b>Norway
         </p>
         <p class="aboutText">
-            <b><span onclick="toggleKeyframes()">(this website is work-in-progress)</span></b>
+            <b><span onclick="switchCSS()">(this website is work-in-progress)</span></b>
         </p>
         
-        <hr class="line">
-        <h1 id="center">SOCIALS:</h1>
         <myBody>
-            <div class="card" onclick="window.open('https://github.com/umittadelen');">
-                <div id="center">
-                    <p>github</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=LoL4bFzqmAa0&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://www.instagram.com/umittadelen/');">
-                <div id="center">
-                    <p>instagram</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=nj0Uj45LGUYh&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://twitter.com/umittadelenmc');">
-                <div id="center">
-                    <p>X</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=yoQabS8l0qpr&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://www.twitch.tv/umittadelen');">
-                <div id="center">
-                    <p>twitch</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=EE2eQW4V47ek&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://www.linkedin.com/in/ümit-taşdelen-446881266/');">
-                <div id="center">
-                    <p>linkedin</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=MR3dZdlA53te&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://www.planetminecraft.com/member/umittadelen/');">
-                <div id="center">
-                    <p>planet minecraft</p>
-                </div>
-                <img src="https://www.planetminecraft.com/favicon.ico" alt="" loading="lazy" draggable="false" style="image-rendering: pixelated;">
-            </div>
-
-            <div class="card" onclick="window.open('https://bsky.app/profile/umittadelen.bsky.social');">
-                <div id="center">
-                    <p>bluesky</p>
-                </div>
-                <img src="https://bsky.app/static/favicon-32x32.png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.location.href='./discord/index.html';">
-                <div id="center">
-                    <p>DISCORD</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=3TEboFBCrXaa&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://namemc.com/profile/umittadelen.1');">
-                <div id="center">
-                    <p>NameMC</p>
-                </div>
-                <img src="https://namemc.com/favicon.ico" alt="" loading="lazy" draggable="false" style="image-rendering: pixelated;">
-            </div>
-        </myBody>
-
-        <hr class="line">
-        <h1 id="center">PROJECTS:</h1>
-
-        <myBody>
-            <div class="card" onclick="window.open('https://pypi.org/project/chromaconsole/');">
-                <div id="center">
-                    <p>chroma console<br><br>python package</p>
-                </div>
-                <img src="https://pypi.org/static/images/favicon.35549fe8.ico" alt="" loading="lazy" draggable="false" style="image-rendering: pixelated;">
-            </div>
-
-            <div class="card" onclick="window.open('https://umittadelen.github.io/optifinetools/');">
-                <div id="center">
-                    <p>minecraft cit generator</p>
-                </div>
-                <img src="https://www.optifine.net/favicon.ico" alt="" loading="lazy" draggable="false" style="image-rendering: pixelated;">
-            </div>
-
-            <div class="card" onclick="window.open('https://umittadelen.github.io/counter/');">
-                <div id="center">
-                    <p>counter</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=LoL4bFzqmAa0&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://umittadelen.github.io/celebrate/');">
-                <div id="center">
-                    <p>celebrate</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=LoL4bFzqmAa0&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://umittadelen.github.io/qrcodemaker/');">
-                <div id="center">
-                    <p>qrcode maker</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=LoL4bFzqmAa0&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-
-            <div class="card" onclick="window.open('https://umittadelen.github.io/words/');">
-                <div id="center">
-                    <p>word serach</p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=LoL4bFzqmAa0&format=png" alt="" loading="lazy" draggable="false">
-            </div>
-        </myBody>
-
-        <hr class="line">
-        <myBody>
-            <div class="card" onclick="window.open('mailto:umittadelen1277@gmail.com');">
-                <div id="center">
-                    <p><b>CLICK TO SEND MAIL</b></p>
-                </div>
-                <img src="https://img.icons8.com/?size=256&id=Ros6Kw5sh4Wx&format=png" alt="" loading="lazy" draggable="false">
-            </div>
         </myBody>
 
         <script>
-            let isModified = false;
-
-            function toggleKeyframes() {
-                const body = document.body;
-
-                if (isModified) {
-                    body.style.animationName = 'colorAnimationRGB';
-                } else {
-                    body.style.animationName = 'colorAnimationBW';
-                }
-
-                isModified = !isModified;
+            function switchCSS() {
+                const currentStylesheet = document.getElementById("stylesheet");
+                    // Check if it's mainA.css or mainB.css and toggle between them
+                    if (currentStylesheet.getAttribute("href") === "./mainA.css") {
+                        currentStylesheet.setAttribute("href", "./mainB.css");
+                    } else {
+                        currentStylesheet.setAttribute("href", "./mainA.css");
+                    }
             }
-
-            document.addEventListener('DOMContentLoaded', function () {
-                var defaultCursor = 'default4.ico';
-                var clickCursor = 'click4.ico';
-                var duration = 100;
-
-                document.body.addEventListener('click', function () {
-                    document.body.style.cursor = 'url(' + clickCursor + '), auto';
-                    setTimeout(function () {
-                        document.body.style.cursor = 'url(' + defaultCursor + '), auto';
-                    }, duration);
-                });
-            });
         </script>
     </body>
 </html>
