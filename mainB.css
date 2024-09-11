@@ -47,9 +47,23 @@ myBody {
     transition: all 0.3s ease-in-out;
     background: url("./noise2.png") 0px 0px repeat;
 }
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.75s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+}
+
 .card:hover{
     box-shadow: 10px 10px 16px #0006 inset;
     background: url("./noise2.png") 5px 5px repeat;
+    transition: all 0.3s ease-in-out;
 }
 
 .card:active{

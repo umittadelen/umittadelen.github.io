@@ -29,7 +29,7 @@ const sections = [
 function createElements() {
     const body = document.body;
 
-    sections.forEach(section => {
+    sections.forEach((section, sectionIndex) => {
         // Add section header with an <hr> and <h1>
         const hr = document.createElement("hr");
         hr.classList.add("line");
@@ -44,7 +44,7 @@ function createElements() {
         // Create a <myBody> to contain elements
         const myBody = document.createElement("myBody");
 
-        section.elements.forEach(element => {
+        section.elements.forEach((element, index) => {
             // Create a card div
             const card = document.createElement("div");
             card.classList.add("card");
@@ -62,11 +62,17 @@ function createElements() {
 
             // Append the card to <myBody>
             myBody.appendChild(card);
+
+            // Add a delay before adding the 'show' class
+            setTimeout(() => {
+                card.classList.add("show");
+            }, index * 300); // Adjust the delay (300ms here) as needed
         });
 
         // Append <myBody> to the body
         body.appendChild(myBody);
     });
 }
+
 
 document.addEventListener('DOMContentLoaded', createElements);
