@@ -1,9 +1,12 @@
+:root {
+    cursor: url("cursor.png"),auto;
+}
+
 body {
     font-family: minecraft, comic sans ms;
     text-shadow: 2px 2px #fff3;
     background-color: #3d3a3a;
     user-select: none;
-    cursor: url("default4.ico"),auto;
     color: #fff;
 }
 
@@ -17,7 +20,6 @@ myBody {
     justify-content: center;
     overflow: hidden;
     height: 100%;
-    cursor: url("default4.ico"),auto;
 }
 
 .aboutText {
