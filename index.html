@@ -16,8 +16,8 @@
         </style>
     </head>
     <body>
-        <h1 id="center">ABOUT ME:</h1>
-        <p class="aboutText">
+        <h1 id="center"><span onclick="switchText()">ABOUT ME:</span></h1>
+        <p class="aboutText" id="aboutText">
             he<b>/</b>him<br>
             <b>16</b> years old<br>
             gamer <b>/</b> programmer <b>/</b> 3D designer<br>
@@ -39,6 +39,100 @@
                     } else {
                         currentStylesheet.setAttribute("href", "./mainA.css");
                     }
+            }
+
+            let currentTextIndex = 0;
+
+            const texts = [
+                `he<b>/</b>him<br>
+                <b>16</b> years old<br>
+                gamer <b>/</b> programmer <b>/</b> 3D designer<br>
+                Oslo<b>/</b>Norway`,
+                
+                `currently not working<br>
+                content creator<br>
+                arnigts <b>/</b> HSR <b>/</b> BA <b>/</b> Proseka<br>
+                Python <b>/</b> HTML <b>/</b> CSS <b>/</b> JS`,
+                
+                `?<br>
+                ?<br>
+                ?<br>
+                ?`,
+
+                `??<br>
+                ?<br>
+                ?<br>
+                ?`,
+
+                `???<br>
+                ?<br>
+                ?<br>
+                ?`,
+
+                `????<br>
+                ?<br>
+                ?<br>
+                ?`,
+
+                `????<br>
+                ??<br>
+                ?<br>
+                ?`,
+
+                `????<br>
+                ???<br>
+                ?<br>
+                ?`,
+
+                `????<br>
+                ????<br>
+                ?<br>
+                ?`,
+
+                `????<br>
+                ????<br>
+                ??<br>
+                ?`,
+
+                `????<br>
+                ????<br>
+                ???<br>
+                ?`,
+
+                `????<br>
+                ????<br>
+                ????<br>
+                ?`,
+
+                `????<br>
+                ????<br>
+                ????<br>
+                ??`,
+
+                `????<br>
+                ????<br>
+                ????<br>
+                ???`,
+
+                `????<br>
+                ????<br>
+                ????<br>
+                ????`,
+
+                `are you spying on me?<br>
+                ????<br>
+                ????<br>
+                ????`,
+
+                `63 68 69 6C 64 20 73 74 65 61 6C 65 72<br>
+                67 61 6D 62 6C 65 72<br>
+                66 75 72 72 79 20 65 6E 6A 6F 79 65 72<br>`
+            ];
+
+            function switchText() {
+                const aboutText = document.getElementById("aboutText");
+                currentTextIndex = (currentTextIndex + 1) % texts.length;
+                aboutText.innerHTML = texts[currentTextIndex];
             }
         </script>
     </body>
