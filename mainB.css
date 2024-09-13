@@ -5,7 +5,7 @@
 body {
     font-family: minecraft, comic sans ms;
     text-shadow: 2px 2px #fff3;
-    background-color: #3d3a3a;
+    background-color: #2d2b2b;
     user-select: none;
     color: #fff;
 }
@@ -43,42 +43,30 @@ myBody {
     background-color: #fff4;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 5px 5px 16px #0006 inset;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 5px 5px 16px #0008 inset;
+    transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
     background: url("./noise2.png") 0px 0px repeat;
 }
 
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.75s ease-out, transform 0.5s ease-out;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.3s ease-in-out;
-}
-
 .card:hover{
-    box-shadow: 10px 10px 16px #0006 inset;
+    box-shadow: 10px 10px 16px #0008 inset;
     background: url("./noise2.png") 5px 5px repeat;
-    transition: all 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
 .card:active{
-    box-shadow: 10px 10px 16px #0006 inset;
+    box-shadow: 10px 10px 16px #0008 inset;
     background-color: #fff4;
 }
 
 .card:hover p {
     transform: translate(5px, 5px);
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .card p{
     font-size: 20px;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .line{
