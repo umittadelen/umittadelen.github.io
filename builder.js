@@ -7,7 +7,8 @@ const sections = [
             { text: "X", link: "https://twitter.com/umittadelenmc" },
             { text: "twitch", link: "https://www.twitch.tv/umittadelen" },
             { text: "linkedin", link: "https://www.linkedin.com/in/ümit-taşdelen-446881266/" },
-            { text: "bluesky", link: "https://umittadelen.bsky.social"}
+            { text: "bluesky", link: "https://umittadelen.bsky.social"},
+            { text: "discord", link: "./discord"}
         ]
     },
     {
@@ -51,7 +52,7 @@ function createElements() {
             // Create a card div
             const card = document.createElement("div");
             card.classList.add("card");
-            card.setAttribute("onclick", `window.open('${element.link}')`);
+            card.setAttribute("onclick", `window.location.href='${element.link}'`);
             
             // Create the inner centered text
             const centerDiv = document.createElement("div");
