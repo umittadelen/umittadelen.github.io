@@ -6,7 +6,8 @@ const sections = [
             { text: "instagram", link: "https://www.instagram.com/umittadelen/" },
             { text: "X", link: "https://twitter.com/umittadelenmc" },
             { text: "twitch", link: "https://www.twitch.tv/umittadelen" },
-            { text: "linkedin", link: "https://www.linkedin.com/in/ümit-taşdelen-446881266/" }
+            { text: "linkedin", link: "https://www.linkedin.com/in/ümit-taşdelen-446881266/" },
+            { text: "bluesky", link: "https://umittadelen.bsky.social"}
         ]
     },
     {
@@ -15,13 +16,15 @@ const sections = [
             { text: "chroma console<br><br>python package", link: "https://pypi.org/project/chromaconsole/" },
             { text: "minecraft cit generator", link: "https://umittadelen.github.io/optifinetools/" },
             { text: "counter", link: "https://umittadelen.github.io/counter/" },
-            { text: "celebrate", link: "https://umittadelen.github.io/celebrate/" }
+            { text: "celebrate", link: "https://umittadelen.github.io/celebrate/" },
+            { text: "words", link: "https://umittadelen.github.io/words/" },
+            { text: "optifine tools", link: "https://umittadelen.github.io/optifinetools/" }
         ]
     },
     {
         header: "CONTACT:",
         elements: [
-            { text: "<b>CLICK TO SEND MAIL</b>", link: "mailto:umittadelen1277@gmail.com" }
+            { text: "<b>CLICK TO SEND MAIL</b>", link: "mailto:umittadelen1772@gmail.com" }
         ]
     }
 ];
