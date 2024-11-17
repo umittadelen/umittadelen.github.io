@@ -61,7 +61,7 @@ html {
   background-color: #6d5cff;
   padding: 10px;
   border-radius: 3px;
-  color: #fff;
+  color: #000;
   font-size: 0.85rem;
   transition: 0.2s ease-in-out;
   margin-top: 12px;
@@ -131,11 +131,24 @@ html {
   border-radius: 50%;
 }
 
-.card-body .profile-header .profil-logo img {
+.card-body .profile-header .profil-logo img.pfp {
   display: block;
-  width: 80px;
-  height: 80px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
+}
+
+.card-body .profile-header .profil-logo .avatar_c51b4e {
+  transform: translateY(-93px) translateX(-10px);
+  position: absolute;
+  display: block;
+  width: 105px;
+  height: 105px;
+  pointer-events: none;
+}
+
+.avatar_c51b4e img{
+  width: 100%;
 }
 
 .card-body .profile-header .profil-logo::before {
@@ -216,7 +229,7 @@ html {
 }
 
 .card-body .profile-body  {
-  color: #eeeeee;
+  color: #000000;
   display: block;
   font-size: 2em;
   margin-inline-start: 0px;
@@ -228,24 +241,24 @@ html {
 }
 
 .userTagUsernameBase {
-  overflow: auto;
+  overflow: hidden;
   word-break: break-all;
   text-overflow: clip;
   white-space: normal;
-  color: hsl( 220 calc( 1 * 13%) 95.5% / 1)!important;
+  color: #000;
   vertical-align: top;
   display: inline;
 }
 
 .card-body .profile-body span {
-  color: #b9bbbe;
+  color: #000;
   font-size: 14px;
   line-height: 1.2857142857142858;
   font-weight: 400;
 }
 
 .defaultColor {
-  color: hsl( 210 calc( 1 * 9.1%) 87.1% / 1);
+  color: #000;
 }
 
 .heading-lg-semibold {
@@ -278,39 +291,6 @@ html {
   line-height: 18px;
 }
 
-.headerBotTagWithNickname {
-  margin-bottom: 2px!important;
-  display: inline-flex;
-  line-height: 15px;
-}
-
-.botTagVerified {
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  margin-left: -4px;
-}
-
-.botTag {
-  font-size: .625rem;
-  text-transform: uppercase;
-  vertical-align: top;
-  display: inline-flex;
-  align-items: center;
-  flex-shrink: 0;
-  text-indent: 0;
-}
-
-.botText{
-  position: relative;
-    font-weight: 500;
-    vertical-align: top;
-}
-
-.bot {
-  margin-left: 1ch;
-}
-
 .px {
   height: 15px;
   padding: 0 4px;
@@ -335,7 +315,7 @@ html {
 }
 
 .card-body .profile-body .category-title {
-  color: white;
+  color: #000;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.8rem;
@@ -348,7 +328,7 @@ html {
 }
 
 .card-body .profile-body .basic-infos p {
-  color: #bdbebf;
+  color: #000;
   font-size: 0.9rem;
 }
 
@@ -362,7 +342,7 @@ html {
 }
 
 .card-body .profile-body .basic-infos p b {
-  color: #ddd;
+  color: #000;
 }
 
 .card-body .profile-body .roles {
@@ -453,12 +433,12 @@ html {
   padding: 13px;
   width: 100%;
   border-radius: 4px;
-  color: #eeeeee;
+  color: #000;
   margin-top: 14px;
 }
 
 input::placeholder, textarea::placeholder{
-  color: #bbb;
+  color: #000;
 }
 
 .nitro-card {
@@ -482,7 +462,7 @@ input::placeholder, textarea::placeholder{
 }
 
 .nitro-card .card-body .profile-body {
-  background: #18191c91;
+  background: #ffffff91;
 }
 
 .nitro-card .card-body .profile-header .profil-logo {
