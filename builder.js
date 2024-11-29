@@ -14,7 +14,7 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
-            { text: "chroma console<br><br>python package", link: "https://pypi.org/project/chromaconsole/" },
+            { text: "chroma console<br>python package", link: "https://pypi.org/project/chromaconsole/" },
             { text: "minecraft cit generator", link: "https://umittadelen.github.io/optifinetools/" },
             { text: "counter", link: "https://umittadelen.github.io/counter/" },
             { text: "celebrate", link: "https://umittadelen.github.io/celebrate/" },
