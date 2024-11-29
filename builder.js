@@ -19,7 +19,8 @@ const sections = [
             { text: "counter", link: "https://umittadelen.github.io/counter/" },
             { text: "celebrate", link: "https://umittadelen.github.io/celebrate/" },
             { text: "words", link: "https://umittadelen.github.io/words/" },
-            { text: "optifine tools", link: "https://umittadelen.github.io/optifinetools/" }
+            { text: "optifine tools", link: "https://umittadelen.github.io/optifinetools/" },
+            { text: "Text to image<br>prompt builder", link: "https://umittadelen.github.io/PromptBuilder/" }
         ]
     },
     {
