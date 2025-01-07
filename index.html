@@ -25,7 +25,6 @@
         <p class="aboutText">
             <b><span onclick="switchCSS()">(this website is work-in-progress)</span></b>
         </p>
-        <p class="aboutText"><span id="visit-count"></span></p>
         
         <myBody>
         </myBody>
@@ -60,46 +59,6 @@
                 currentTextIndex = (currentTextIndex + 1) % texts.length;
                 aboutText.innerHTML = texts[currentTextIndex];
             }
-
-            const REPO = "umittadelen/aboutMe"; // Replace with your repo
-            const GITHUB_API = `https://api.github.com/repos/${REPO}/dispatches`;
-            const VISIT_FETCH_URL = `https://raw.githubusercontent.com/${REPO}/main/visits.json`;
-            const RATE_LIMIT_TIME = 5 * 60 * 1000; // 5 minutes in milliseconds
-
-            // Fetch the current visit count
-            fetch(VISIT_FETCH_URL)
-                .then((response) => response.json())
-                .then((data) => {
-                    document.getElementById("visit-count").innerText = data.visits;
-                });
-
-            // Function to trigger GitHub Action
-            function incrementVisitCount() {
-                const lastVisitTime = localStorage.getItem("lastVisitTime");
-                const now = new Date().getTime();
-
-                if (lastVisitTime && now - lastVisitTime < RATE_LIMIT_TIME) {
-                    console.log("You are visiting too frequently. Try again later.");
-                    return; // Block the request
-                }
-
-                // Store the current time as the last visit time
-                localStorage.setItem("lastVisitTime", now);
-
-                // Trigger GitHub Action
-                fetch(GITHUB_API, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        event_type: "increment_visits",
-                    }),
-                }).catch(console.error);
-            }
-
-            // Trigger the visit increment when the page is loaded
-            incrementVisitCount();
         </script>
     </body>
 </html>
