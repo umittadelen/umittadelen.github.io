@@ -14,16 +14,17 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
-            { text: "better<br>prompting", link: "https://better_prompting.umittadelen.net"},
-            { text: "Text to image<br>prompt builder", link: "https://prompt_builder.umittadelen.net" },
+            { text: "better<br>prompting", link: "https://umittadelen.github.io/better_prompting/"},
+            { text: "Text to image<br>prompt builder", link: "https://umittadelen.github.io/PromptBuilder/" },
             { text: "chroma console<br>python package", link: "https://pypi.org/project/chromaconsole/" },
             { text: "minecraft cit generator", link: "https://umittadelen.github.io/optifinetools/" },
             { text: "counter", link: "https://umittadelen.github.io/counter/" },
             { text: "celebrate", link: "https://umittadelen.github.io/celebrate/" },
             { text: "words", link: "https://umittadelen.github.io/words/" },
-            { text: "optifine tools", link: "https://optifinetools.umittadelen.net/" },
-            { text: "periodic table", link: "https://periodic_table.umittadelen.net/"},
-            { text: "clock", link: "https://clock.umittadelen.net/"}
+            { text: "optifine tools", link: "https://umittadelen.github.io/optifinetools/" },
+            { text: "Text to image<br>prompt builder", link: "https://umittadelen.github.io/PromptBuilder/" }
+            { text: "periodic table", link: "https://umittadelen.github.io/periodic-table/"},
+            { text: "clock", link: "https://umittadelen.github.io/clock/"}
         ]
     },
     {
