@@ -22,7 +22,7 @@ const sections = [
             { text: "celebrate", link: "https://umittadelen.github.io/celebrate/" },
             { text: "words", link: "https://umittadelen.github.io/words/" },
             { text: "optifine tools", link: "https://umittadelen.github.io/optifinetools/" },
-            { text: "Text to image<br>Generator", link: "https://github.com/umittadelen/TextToImage" },
+            { text: "<b>EasyUI</b><br>Image Generator", link: "https://github.com/umittadelen/TextToImage" },
             { text: "periodic table", link: "https://umittadelen.github.io/periodic-table/"},
             { text: "Genetic Code<br>Calculator", link: "https://umittadelen.github.io/DenGenetiskeKoden/"},
             { text: "clock", link: "https://umittadelen.github.io/clock/"}
