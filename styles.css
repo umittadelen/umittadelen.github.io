@@ -1,19 +1,14 @@
-:root {
-    cursor: url("cursor.png"),auto;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 body {
-    font-family: minecraft, comic sans ms;
+    font-family: "Quicksand", comic sans ms;
     text-shadow: 2px 2px #0003;
     animation: colorAnimationRGB 30s infinite;
     transition: background-color 30s ease;
     user-select: none;
 }
 
-myBody {
+.my-body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,6 +18,11 @@ myBody {
     justify-content: center;
     overflow: hidden;
     height: 100%;
+}
+
+#small-text {
+    font-size: 0.5em;
+    font-weight: lighter;
 }
 
 .aboutText {
@@ -47,6 +47,12 @@ myBody {
     height: 100%;
 }
 
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease-in-out;
+}
+
 .card {
     width: 100px;
     height: 100px;
@@ -56,26 +62,6 @@ myBody {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.fade-in.show {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.3s ease-in-out;
-}
-
-.card:hover{
-    box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.3);
-    transform: translate(-5px,-5px);
-    transition: all 0.3s ease-in-out;
-}
-
-.card:active{
-    box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.3);
-    transform: translate(-5px,-5px);
-    background-color: #0004;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .card p{

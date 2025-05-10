@@ -38,6 +38,7 @@ const sections = [
 ];
 
 function createElements() {
+    console.log("Creating elements...");
     const body = document.body;
 
     sections.forEach((section, sectionIndex) => {
@@ -52,14 +53,35 @@ function createElements() {
         body.appendChild(hr);
         body.appendChild(header);
 
-        // Create a <myBody> to contain elements
-        const myBody = document.createElement("myBody");
+        // Create a <div class="my-body"> to contain elements
+        const myBody = document.createElement("div");
+        myBody.classList.add("my-body");
 
         section.elements.forEach((element, index) => {
             // Create a card div
             const card = document.createElement("div");
             card.classList.add("card");
             card.setAttribute("onclick", `window.location.href='${element.link}'`);
+
+            card.addEventListener("mouseenter", () => {
+                gsap.to(card, {
+                    duration: 0.6,
+                    ease: "elastic.out(1, 0.8)",
+                    x: -5,
+                    y: -5,
+                    boxShadow: "10px 10px 16px rgba(0, 0, 0, 0.3)"
+                });
+            });
+
+            card.addEventListener("mouseleave", () => {
+                gsap.to(card, {
+                    duration: 0.4,
+                    ease: "elastic.out(1, 0.8)",
+                    x: 0,
+                    y: 0,
+                    boxShadow: "5px 5px 16px rgba(0, 0, 0, 0.3)"
+                });
+            });
             
             // Create the inner centered text
             const centerDiv = document.createElement("div");
@@ -85,5 +107,6 @@ function createElements() {
     });
 }
 
-
-document.addEventListener('DOMContentLoaded', createElements);
+document.addEventListener("DOMContentLoaded", () => {
+    createElements();
+});
