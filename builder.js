@@ -53,7 +53,6 @@ function createElements() {
         body.appendChild(hr);
         body.appendChild(header);
 
-        // Create a <div class="my-body"> to contain elements
         const myBody = document.createElement("div");
         myBody.classList.add("my-body");
 
@@ -61,25 +60,40 @@ function createElements() {
             // Create a card div
             const card = document.createElement("div");
             card.classList.add("card");
-            card.setAttribute("onclick", `window.location.href='${element.link}'`);
+            card.setAttribute("id", `card-${sectionIndex}-${index}`);
 
             card.addEventListener("mouseenter", () => {
+                gsap.killTweensOf(card); // cancel any existing animation on this card
                 gsap.to(card, {
                     duration: 0.6,
-                    ease: "elastic.out(1, 0.8)",
+                    ease: "elastic.out(2, 0.5)",
                     x: -5,
                     y: -5,
                     boxShadow: "10px 10px 16px rgba(0, 0, 0, 0.3)"
                 });
             });
-
+            
             card.addEventListener("mouseleave", () => {
+                gsap.killTweensOf(card); // cancel ongoing tween
                 gsap.to(card, {
-                    duration: 0.4,
-                    ease: "elastic.out(1, 0.8)",
+                    duration: 0.6,
+                    ease: "elastic.out(2, 0.5)",
                     x: 0,
                     y: 0,
                     boxShadow: "5px 5px 16px rgba(0, 0, 0, 0.3)"
+                });
+            });
+            
+            card.addEventListener("click", () => {
+                gsap.to(card, {
+                    duration: 0.4,
+                    ease: "elastic.out(2, 0.5)",
+                    x: -2.5,
+                    y: -2.5,
+                    boxShadow: "7.5px 7.5px 16px rgba(0, 0, 0, 0.3)",
+                    onComplete: () => {
+                        window.location.href = element.link;
+                    }
                 });
             });
             
@@ -95,14 +109,8 @@ function createElements() {
 
             // Append the card to <myBody>
             myBody.appendChild(card);
-
-            // Add a delay before adding the 'show' class
-            setTimeout(() => {
-                card.classList.add("show");
-            }, index * 300); // Adjust the delay (300ms here) as needed
         });
 
-        // Append <myBody> to the body
         body.appendChild(myBody);
     });
 }
