@@ -47,7 +47,8 @@ function createElements() {
         hr.classList.add("line");
 
         const header = document.createElement("h1");
-        header.id = "center";
+        header.classList.add("center");
+        header.id = `header-${sectionIndex}`;
         header.innerHTML = section.header;
 
         body.appendChild(hr);
@@ -99,7 +100,7 @@ function createElements() {
             
             // Create the inner centered text
             const centerDiv = document.createElement("div");
-            centerDiv.id = "center";
+            centerDiv.classList.add("center");
             const paragraph = document.createElement("p");
             paragraph.innerHTML = element.text;
             centerDiv.appendChild(paragraph);
