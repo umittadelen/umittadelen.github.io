@@ -1,17 +1,5 @@
 const sections = [
     {
-        header: "SOCIALS:",
-        elements: [
-            { text: "github", link: "https://github.com/umittadelen" },
-            { text: "instagram", link: "https://www.instagram.com/umittadelen/" },
-            { text: "X", link: "https://twitter.com/umittadelenmc" },
-            { text: "twitch", link: "https://www.twitch.tv/umittadelen" },
-            { text: "linkedin", link: "https://www.linkedin.com/in/ümit-taşdelen-446881266/" },
-            { text: "bluesky", link: "https://umittadelen.bsky.social"},
-            { text: "discord", link: "./discord"}
-        ]
-    },
-    {
         header: "PROJECTS:",
         elements: [
             { text: "Custom<br>Timer", link: "https://umittadelen.github.io/CustomTimer/"},
@@ -27,6 +15,18 @@ const sections = [
             { text: "periodic table", link: "https://umittadelen.github.io/periodic-table/"},
             { text: "Genetic Code<br>Calculator", link: "https://umittadelen.github.io/DenGenetiskeKoden/"},
             { text: "clock", link: "https://umittadelen.github.io/clock/"}
+        ]
+    },
+    {
+        header: "SOCIALS:",
+        elements: [
+            { text: "github", link: "https://github.com/umittadelen" },
+            { text: "instagram", link: "https://www.instagram.com/umittadelen/" },
+            { text: "X", link: "https://twitter.com/umittadelenmc" },
+            { text: "twitch", link: "https://www.twitch.tv/umittadelen" },
+            { text: "linkedin", link: "https://www.linkedin.com/in/ümit-taşdelen-446881266/" },
+            { text: "bluesky", link: "https://umittadelen.bsky.social"},
+            { text: "discord", link: "./discord"}
         ]
     },
     {
