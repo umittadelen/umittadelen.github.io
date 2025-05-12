@@ -70,6 +70,10 @@ h1 span {
     box-shadow: 5px 5px 16px rgba(0, 0, 0, 0.3);
 }
 
+.card-holder {
+  border-radius: 20px;
+}
+
 .card p{
     font-size: 20px;
 }
@@ -78,11 +82,6 @@ h1 span {
     border: 2px solid #0003;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
-}
-
-@font-face {
-    font-family: minecraft;
-    src: url("Mojangles.ttf") format("opentype");
 }
 
 ::-webkit-scrollbar {

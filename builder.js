@@ -61,9 +61,12 @@ function createElements() {
             // Create a card div
             const card = document.createElement("div");
             card.classList.add("card");
+            const cardHolder = document.createElement("div");
+            cardHolder.classList.add("card-holder");
             card.setAttribute("id", `card-${sectionIndex}-${index}`);
+            cardHolder.setAttribute("id", `cardholder-${sectionIndex}-${index}`);
 
-            card.addEventListener("mouseenter", () => {
+            cardHolder.addEventListener("mouseenter", () => {
                 gsap.killTweensOf(card); // cancel any existing animation on this card
                 gsap.to(card, {
                     duration: 0.6,
@@ -74,7 +77,7 @@ function createElements() {
                 });
             });
             
-            card.addEventListener("mouseleave", () => {
+            cardHolder.addEventListener("mouseleave", () => {
                 gsap.killTweensOf(card); // cancel ongoing tween
                 gsap.to(card, {
                     duration: 0.6,
@@ -85,7 +88,7 @@ function createElements() {
                 });
             });
             
-            card.addEventListener("click", () => {
+            cardHolder.addEventListener("click", () => {
                 gsap.to(card, {
                     duration: 0.4,
                     ease: "elastic.out(2, 0.5)",
@@ -108,8 +111,9 @@ function createElements() {
             // Append to the card
             card.appendChild(centerDiv);
 
-            // Append the card to <myBody>
-            myBody.appendChild(card);
+            cardHolder.appendChild(card);
+
+            myBody.appendChild(cardHolder);
         });
 
         body.appendChild(myBody);
