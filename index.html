@@ -21,42 +21,6 @@
 
     <script src="./builder.js"></script>
     <script src="./aboutme.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll("h1").forEach(h1 => {
-                const split = new SplitText(h1, { type: "chars" });
-                const chars = split.chars;
-                let animations = [];
-    
-                const animateChars = () => {
-                    animations.forEach(anim => anim.kill());
-                    animations = chars.map((char, i) =>
-                        gsap.to(char, {
-                            rotation: -10,
-                            duration: 0.5,
-                            ease: "elastic.out(2, 0.5)",
-                            delay: i * 0.05
-                        })
-                    );
-                };
-    
-                const resetChars = () => {
-                    animations.forEach(anim => anim.kill());
-                    animations = [];
-    
-                    gsap.to(chars, {
-                        rotation: 0,
-                        duration: 0.3,
-                        ease: "elastic.out(2, 0.5)",
-                        stagger: 0.02
-                    });
-                };
-    
-                h1.addEventListener("mouseenter", animateChars);
-                h1.addEventListener("mouseleave", resetChars);
-            });
-        });
-    </script>
 </body>
 
 </html>
