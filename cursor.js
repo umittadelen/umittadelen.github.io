@@ -16,19 +16,27 @@ let pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 let lastPointer = { x: pointer.x, y: pointer.y };
 let velocity = 0;
 let isActive = false;
+let hideTimeout = null;
 
 function showCursor() {
     if (!isActive) {
         root.style.display = "block";
         isActive = true;
     }
+    if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+    }
 }
 
 function hideCursor() {
-    if (isActive) {
+    if (hideTimeout) return; // already waiting to hide!
+
+    hideTimeout = setTimeout(() => {
         root.style.display = "none";
         isActive = false;
-    }
+        hideTimeout = null;
+    }, 500); // wait for trail to "finish"
 }
 
 // Desktop mouse move
@@ -37,13 +45,6 @@ window.addEventListener("mousemove", (e) => {
 
     pointer.x = e.clientX;
     pointer.y = e.clientY;
-
-    const dx = pointer.x - lastPointer.x;
-    const dy = pointer.y - lastPointer.y;
-    velocity = Math.sqrt(dx * dx + dy * dy);
-
-    lastPointer.x = pointer.x;
-    lastPointer.y = pointer.y;
 
     cursorCircle.setAttribute("cx", pointer.x);
     cursorCircle.setAttribute("cy", pointer.y);
