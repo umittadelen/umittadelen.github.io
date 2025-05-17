@@ -40,7 +40,7 @@ const sections = [
 
 function createElements() {
     console.log("Creating elements...");
-    const body = document.body;
+    const body = document.getElementById("body");
 
     sections.forEach((section, sectionIndex) => {
         // Add section header with an <hr> and <h1>

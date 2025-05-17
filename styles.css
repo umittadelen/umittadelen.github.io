@@ -6,6 +6,23 @@ body {
     animation: colorAnimationRGB 30s infinite;
     transition: background-color 30s ease;
     user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    cursor: none;
+}
+
+svg#pointer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background: transparent;
 }
 
 .my-body {
@@ -37,12 +54,31 @@ body {
 }
 
 @keyframes colorAnimationRGB {
-    0%,100% { background-color: hsl(0, 100%, 90%);}
-    16.6% { background-color: hsl(43, 100%, 88%);}
-    33.2% { background-color: hsl(61, 100%, 86%);}
-    49.8% { background-color: hsl(127, 100%, 88%);}
-    66.4% { background-color: hsl(208, 100%, 89%);}
-    83% { background-color: hsl(300, 100%, 92%);}
+
+    0%,
+    100% {
+        background-color: hsl(0, 100%, 90%);
+    }
+
+    16.6% {
+        background-color: hsl(43, 100%, 88%);
+    }
+
+    33.2% {
+        background-color: hsl(61, 100%, 86%);
+    }
+
+    49.8% {
+        background-color: hsl(127, 100%, 88%);
+    }
+
+    66.4% {
+        background-color: hsl(208, 100%, 89%);
+    }
+
+    83% {
+        background-color: hsl(300, 100%, 92%);
+    }
 }
 
 h1 span {
@@ -72,31 +108,58 @@ h1 span {
 }
 
 .card-holder {
-  border-radius: 20px;
+    border-radius: 20px;
 }
 
-.card p{
+.card p {
     font-size: 20px;
 }
 
-.line{
+.line {
     border: 2px solid #0003;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
+    /*width*/
+    width: calc(100% - 60px);
 }
 
-::-webkit-scrollbar {
+.scrollbar {
+    position: fixed;
+    right: 0;
+    top: 0;
     width: 15px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 9999;
 }
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.15); 
-}
-::-webkit-scrollbar-thumb {
+
+.thumb {
+    position: absolute;
+    width: 100%;
     background: rgba(0, 0, 0, 0.18);
-    border-radius:10px;
-    transition: all 0.3s ease;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+    cursor: pointer;
 }
-::-webkit-scrollbar-thumb:hover {
+
+.thumb:hover {
     background: rgba(0, 0, 0, 0.25);
-    transition: all 0.3s ease;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+}
+
+html, body {
+  -ms-overflow-style: none;  /* IE/Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;             /* Chrome/Safari/Edge */
 }
