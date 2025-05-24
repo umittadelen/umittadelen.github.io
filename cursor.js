@@ -2,7 +2,6 @@ gsap.defaults({ ease: "none" });
 
 const svgns = "http://www.w3.org/2000/svg";
 const root = document.getElementById("pointer");
-const ease = 0.75;
 
 const cursorCircle = document.createElementNS(svgns, "circle");
 cursorCircle.setAttribute("r", 10);
@@ -12,9 +11,14 @@ cursorCircle.setAttribute("stroke-width", 2);
 cursorCircle.setAttribute("opacity", 0.8);
 root.appendChild(cursorCircle);
 
-let pointer = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-let lastPointer = { x: pointer.x, y: pointer.y };
-let velocity = 0;
+// Add a small 2x2px center circle
+const centerCircle = document.createElementNS(svgns, "circle");
+centerCircle.setAttribute("r", 1.5); // diameter 3px
+centerCircle.setAttribute("fill", "#000");
+centerCircle.setAttribute("cx", 0);
+centerCircle.setAttribute("cy", 0);
+root.appendChild(centerCircle);
+
 let isActive = false;
 let hideTimeout = null;
 
@@ -30,107 +34,27 @@ function showCursor() {
 }
 
 function hideCursor() {
-    if (hideTimeout) return; // already waiting to hide!
-
-    hideTimeout = setTimeout(() => {
-        root.style.display = "none";
-        isActive = false;
-        hideTimeout = null;
-    }, 500); // wait for trail to "finish"
+    if (hideTimeout) return;
+    root.style.display = "none";
+    isActive = false;
+    hideTimeout = null;
 }
 
-// Desktop mouse move
 window.addEventListener("mousemove", (e) => {
     showCursor();
-
-    pointer.x = e.clientX;
-    pointer.y = e.clientY;
-
-    cursorCircle.setAttribute("cx", pointer.x);
-    cursorCircle.setAttribute("cy", pointer.y);
+    cursorCircle.setAttribute("cx", e.clientX);
+    cursorCircle.setAttribute("cy", e.clientY);
+    centerCircle.setAttribute("cx", e.clientX);
+    centerCircle.setAttribute("cy", e.clientY);
+    // Elastic GSAP animation for the big circle
+    gsap.to(cursorCircle, {
+        duration: 0.6,
+        attr: { cx: e.clientX, cy: e.clientY },
+        ease: "elastic.out(1, 0.4)"
+    });
 });
 
-// Mouse leave screen
 window.addEventListener("mouseout", hideCursor);
-
-// Touch support
-window.addEventListener("touchstart", (e) => {
-    showCursor();
-    const touch = e.touches[0];
-    pointer.x = touch.clientX;
-    pointer.y = touch.clientY;
-
-    cursorCircle.setAttribute("cx", pointer.x);
-    cursorCircle.setAttribute("cy", pointer.y);
-});
-
-window.addEventListener("touchmove", (e) => {
-    showCursor();
-    const touch = e.touches[0];
-    pointer.x = touch.clientX;
-    pointer.y = touch.clientY;
-
-    cursorCircle.setAttribute("cx", pointer.x);
-    cursorCircle.setAttribute("cy", pointer.y);
-});
-
-window.addEventListener("touchend", hideCursor);
-window.addEventListener("touchcancel", hideCursor);
 
 // Start hidden
 hideCursor();
-
-let leader = pointer;
-const total = 100;
-
-for (let i = 0; i < total; i++) {
-    leader = createLine(leader, i);
-}
-
-function createLine(leader, i) {
-    const line = document.createElementNS(svgns, "line");
-    root.appendChild(line);
-
-    line.setAttribute("x1", 0);
-    line.setAttribute("y1", 0);
-    line.setAttribute("x2", 0);
-    line.setAttribute("y2", 0);
-
-    line.style.stroke = "#000";
-    line.style.strokeLinecap = "round";
-
-    const minWidth = 0.5;
-    const maxWidth = 2;
-    const thickness = minWidth + (1 - i / total) * (maxWidth - minWidth);
-    line.style.strokeWidth = thickness;
-
-    gsap.set(line, { x: -15, y: -15 });
-
-    gsap.to(line, {
-        duration: 1000,
-        repeat: -1,
-        x: "+=1",
-        y: "+=1",
-        modifiers: {
-            x() {
-                let posX = gsap.getProperty(line, "x");
-                let leaderX = gsap.getProperty(leader, "x");
-                let x = posX + (leaderX - posX) * ease;
-                line.setAttribute("x2", leaderX - x);
-                return x;
-            },
-            y() {
-                let posY = gsap.getProperty(line, "y");
-                let leaderY = gsap.getProperty(leader, "y");
-                let y = posY + (leaderY - posY) * ease;
-                line.setAttribute("y2", leaderY - y);
-                return y;
-            },
-        },
-        onComplete: () => {
-            line.remove();
-        }
-    });
-
-    return line;
-}

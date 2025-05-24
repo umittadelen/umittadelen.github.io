@@ -38,7 +38,85 @@ const sections = [
     }
 ];
 
+function setupPreviewModal() {
+    const previewContainer = document.querySelector('.preview-container');
+    const iframeWrapper = previewContainer.querySelector('.iframe-wrapper');
+    const iframe = previewContainer.querySelector('iframe');
+    const closeBtn = previewContainer.querySelector('#close-button');
+
+    // Hide on load
+    previewContainer.style.display = 'none';
+    previewContainer.style.opacity = 0;
+    iframeWrapper.style.transform = 'scale(0.7)';
+
+    // Close modal helper
+    function closePreviewModal() {
+        gsap.to(iframeWrapper, {
+            duration: 0.5,
+            scale: 0.7,
+            ease: 'elastic.in(1, 0.5)'
+        });
+        gsap.to(previewContainer, {
+            duration: 0.3,
+            opacity: 0,
+            ease: 'power2.in',
+            onComplete: () => {
+                previewContainer.style.display = 'none';
+                iframe.src = '';
+            }
+        });
+    }
+
+    closeBtn.addEventListener('click', closePreviewModal);
+
+    // Close when clicking outside the iframe-wrapper
+    previewContainer.addEventListener('mousedown', (e) => {
+        if (e.target === previewContainer) {
+            closePreviewModal();
+        }
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', (e) => {
+        if (previewContainer.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
+            closePreviewModal();
+        }
+    });
+
+    // Expose a function to show the modal
+    window.showPreview = function(link) {
+        // Only preview .github.io links in the modal
+        if (/^https?:\/\/[^\/]+\.github\.io(\/|$)/i.test(link)) {
+            iframe.src = link;
+            previewContainer.style.display = 'flex';
+            previewContainer.style.backdropFilter = 'blur(5px)'; // Add blur
+            previewContainer.style.background = 'rgba(30, 30, 30, 0.35)'; // Subtle dark overlay
+            gsap.fromTo(previewContainer, {
+                opacity: 0,
+                filter: 'blur(5px)',
+                top: '-60px'
+            }, {
+                duration: 0.5,
+                opacity: 1,
+                filter: 'blur(0px)',
+                top: '0px',
+                ease: 'power3.out'
+            });
+            gsap.fromTo(iframeWrapper, {
+                scale: 0.6,
+                rotateY: 15,
+            }, {
+                duration: 0.8,
+                scale: 1,
+                rotateY: 0,
+                ease: 'elastic.out(1, 0.5)'
+            });
+        }
+    };
+}
+
 function createElements() {
+    setupPreviewModal(); // Use the static modal
     console.log("Creating elements...");
     const body = document.getElementById("body");
 
@@ -51,6 +129,10 @@ function createElements() {
         header.classList.add("center");
         header.id = `header-${sectionIndex}`;
         header.innerHTML = section.header;
+
+        if (sectionIndex === 0) {
+            header.innerHTML = `<span>`+section.header+`<br><span id="small-text">right-click to preview (if supported)</span></span>`;
+        }
 
         body.appendChild(hr);
         body.appendChild(header);
@@ -90,16 +172,12 @@ function createElements() {
             });
             
             cardHolder.addEventListener("click", () => {
-                gsap.to(card, {
-                    duration: 0.4,
-                    ease: "elastic.out(2, 0.5)",
-                    x: -2.5,
-                    y: -2.5,
-                    boxShadow: "7.5px 7.5px 16px rgba(0, 0, 0, 0.3)",
-                    onComplete: () => {
-                        window.location.href = element.link;
-                    }
-                });
+                window.location.href = element.link;
+            });
+
+            cardHolder.addEventListener("contextmenu", (e) => {
+                e.preventDefault();
+                window.showPreview(element.link);
             });
             
             // Create the inner centered text

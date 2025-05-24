@@ -26,6 +26,58 @@ svg#pointer {
     background: transparent;
 }
 
+.preview-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: 9999;
+    
+}
+
+.iframe-wrapper {
+    cursor: pointer;
+    position: relative;
+    width: calc(100% - min(15vh, 15vw));
+    height: calc(100% - min(15vh, 15vw));
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.iframe-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    display: block;
+    background-color: white;
+}
+
+.iframe-wrapper #close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: min-content;
+    height: min-content;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: rgb(255, 0, 0);
+    text-shadow: 2px 2px rgba(255, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 1.2em;
+
+    z-index: 2;
+}
+
 .my-body {
     margin: 0;
     padding: 0;
@@ -119,7 +171,7 @@ h1 span {
 
 .line {
     border: 2px solid #0003;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     /*width*/
     width: calc(100% - 60px);
@@ -141,7 +193,6 @@ h1 span {
     background: rgba(0, 0, 0, 0.18);
     border-radius: 10px;
     transition: background 0.3s ease;
-    cursor: pointer;
 }
 
 .thumb:hover {

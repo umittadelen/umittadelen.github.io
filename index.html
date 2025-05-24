@@ -10,7 +10,14 @@
     <link id="stylesheet" rel="stylesheet" href="./styles.css">
 </head>
 
-<body>
+<body id="body">
+    <div class="preview-container">
+        <div class="iframe-wrapper">
+            <iframe src="https://umittadelen.github.io/mrpackViewer/"></iframe>
+            <a id="close-button">Close</a>
+        </div>
+    </div>
+
     <svg id="pointer"></svg>
     <div id="about-section"></div>
     <div id="body"></div>
@@ -21,6 +28,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+    <script>
+        const BODY = document.getElementById("body");
+        BODY.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
+    </script>
 
     <script src="./builder.js"></script>
     <script src="./aboutme.js"></script>
