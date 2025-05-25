@@ -36,7 +36,7 @@ svg#pointer {
     justify-content: center;
     display: flex;
     z-index: 9999;
-    
+    display: none;
 }
 
 .iframe-wrapper {
