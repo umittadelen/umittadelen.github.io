@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('./fonts/Quicksand.ttf');
 
 body {
     font-family: "Quicksand", comic sans ms;
@@ -163,6 +163,11 @@ h1 span {
 
 .card-holder {
     border-radius: 20px;
+}
+
+.card-holder.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .card p {

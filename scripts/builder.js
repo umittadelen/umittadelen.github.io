@@ -2,9 +2,9 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
-            { text: "Mrcpack<br>Viewer", link: "https://umittadelen.github.io/mrpackViewer/"},
-            { text: "Custom<br>Timer", link: "https://umittadelen.github.io/CustomTimer/"},
-            { text: "better<br>prompting", link: "https://umittadelen.github.io/better_prompting/"},
+            { text: "Mrcpack<br>Viewer", link: "https://umittadelen.github.io/mrpackViewer/" },
+            { text: "Custom<br>Timer", link: "https://umittadelen.github.io/CustomTimer/" },
+            { text: "better<br>prompting", link: "https://umittadelen.github.io/better_prompting/" },
             { text: "Text to image<br>prompt builder", link: "https://umittadelen.github.io/PromptBuilder/" },
             { text: "chroma console<br>python package", link: "https://pypi.org/project/chromaconsole/" },
             { text: "minecraft cit generator", link: "https://umittadelen.github.io/optifinetools/" },
@@ -13,9 +13,9 @@ const sections = [
             { text: "words", link: "https://umittadelen.github.io/words/" },
             { text: "optifine tools", link: "https://umittadelen.github.io/optifinetools/" },
             { text: "<b>EasyUI</b><br>Image Generator", link: "https://github.com/umittadelen/stableDiffusionEasyUI" },
-            { text: "periodic table", link: "https://umittadelen.github.io/periodic-table/"},
-            { text: "Genetic Code<br>Calculator", link: "https://umittadelen.github.io/DenGenetiskeKoden/"},
-            { text: "clock", link: "https://umittadelen.github.io/clock/"}
+            { text: "periodic table", link: "https://umittadelen.github.io/periodic-table/" },
+            { text: "Genetic Code<br>Calculator", link: "https://umittadelen.github.io/DenGenetiskeKoden/" },
+            { text: "clock", link: "https://umittadelen.github.io/clock/" }
         ]
     },
     {
@@ -26,8 +26,9 @@ const sections = [
             { text: "X", link: "https://twitter.com/umittadelenmc" },
             { text: "twitch", link: "https://www.twitch.tv/umittadelen" },
             { text: "linkedin", link: "https://www.linkedin.com/in/ümit-taşdelen-446881266/" },
-            { text: "bluesky", link: "https://umittadelen.bsky.social"},
-            { text: "discord", link: "./discord"}
+            { text: "bluesky", link: "https://umittadelen.bsky.social" },
+            { text: "discord", link: "", disabled: true },
+            { text: "youtube", link: "https://www.youtube.com/@umittadelen" },
         ]
     },
     {
@@ -84,7 +85,7 @@ function setupPreviewModal() {
     });
 
     // Expose a function to show the modal
-    window.showPreview = function(link) {
+    window.showPreview = function (link) {
         // Only preview .github.io links in the modal
         if (/^https?:\/\/[^\/]+\.github\.io(\/|$)/i.test(link)) {
             iframe.src = link;
@@ -131,7 +132,7 @@ function createElements() {
         header.innerHTML = section.header;
 
         if (sectionIndex === 0) {
-            header.innerHTML = `<span>`+section.header+`<br><span id="small-text">right-click to preview (if supported)</span></span>`;
+            header.innerHTML = `<span>` + section.header + `<br><span id="small-text">right-click to preview (if supported)</span></span>`;
         }
 
         body.appendChild(hr);
@@ -149,37 +150,42 @@ function createElements() {
             card.setAttribute("id", `card-${sectionIndex}-${index}`);
             cardHolder.setAttribute("id", `cardholder-${sectionIndex}-${index}`);
 
-            cardHolder.addEventListener("mouseenter", () => {
-                gsap.killTweensOf(card); // cancel any existing animation on this card
-                gsap.to(card, {
-                    duration: 0.6,
-                    ease: "elastic.out(2, 0.5)",
-                    x: -5,
-                    y: -5,
-                    boxShadow: "10px 10px 16px rgba(0, 0, 0, 0.3)"
+            // handle disabled state
+            if (element.disabled) {
+                cardHolder.classList.add("disabled");
+            } else {
+                cardHolder.addEventListener("mouseenter", () => {
+                    gsap.killTweensOf(card); // cancel any existing animation on this card
+                    gsap.to(card, {
+                        duration: 0.6,
+                        ease: "elastic.out(2, 0.5)",
+                        x: -5,
+                        y: -5,
+                        boxShadow: "10px 10px 16px rgba(0, 0, 0, 0.3)"
+                    });
                 });
-            });
-            
-            cardHolder.addEventListener("mouseleave", () => {
-                gsap.killTweensOf(card); // cancel ongoing tween
-                gsap.to(card, {
-                    duration: 0.6,
-                    ease: "elastic.out(2, 0.5)",
-                    x: 0,
-                    y: 0,
-                    boxShadow: "5px 5px 16px rgba(0, 0, 0, 0.3)"
-                });
-            });
-            
-            cardHolder.addEventListener("click", () => {
-                window.location.href = element.link;
-            });
 
-            cardHolder.addEventListener("contextmenu", (e) => {
-                e.preventDefault();
-                window.showPreview(element.link);
-            });
-            
+                cardHolder.addEventListener("mouseleave", () => {
+                    gsap.killTweensOf(card); // cancel ongoing tween
+                    gsap.to(card, {
+                        duration: 0.6,
+                        ease: "elastic.out(2, 0.5)",
+                        x: 0,
+                        y: 0,
+                        boxShadow: "5px 5px 16px rgba(0, 0, 0, 0.3)"
+                    });
+                });
+
+                cardHolder.addEventListener("click", () => {
+                    window.location.href = element.link;
+                });
+
+                cardHolder.addEventListener("contextmenu", (e) => {
+                    e.preventDefault();
+                    window.showPreview(element.link);
+                });
+            }
+
             // Create the inner centered text
             const centerDiv = document.createElement("div");
             centerDiv.classList.add("center");
