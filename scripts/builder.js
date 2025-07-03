@@ -2,7 +2,7 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
-            { text: "Cursed<br>Clocks", link: "https://umittadelen.github.io/cursed_clocks/" },
+            { text: "Cursed<br>Clocks", link: "https://github.com/umittadelen/cursed_clocks" },
             { text: "Mrcpack<br>Viewer", link: "https://umittadelen.github.io/mrpackViewer/" },
             { text: "Custom<br>Timer", link: "https://umittadelen.github.io/CustomTimer/" },
             { text: "better<br>prompting", link: "https://umittadelen.github.io/better_prompting/" },
