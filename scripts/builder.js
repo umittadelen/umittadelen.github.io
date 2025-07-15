@@ -4,7 +4,7 @@ const sections = [
         elements: [
             { text: "Mrcpack<br>Viewer", link: "https://umittadelen.github.io/mrpackViewer/" },
             { text: "3D Tic-Tac-Toe", link: "https://umittadelen.github.io/3DTTT/" },
-            { text: "Cursed<br>Clocks", link: "https://github.com/umittadelen/cursed_clocks" },
+            { text: "Cursed Clocks (Arduino)", link: "https://github.com/umittadelen/cursed_clocks" },
             { text: "Arduino Video Renderer", link: "https://github.com/umittadelen/arduinoVideoRenderer" },
             { text: "Custom<br>Timer", link: "https://umittadelen.github.io/CustomTimer/" },
             { text: "better<br>prompting", link: "https://umittadelen.github.io/better_prompting/" },
