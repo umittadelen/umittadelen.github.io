@@ -2,6 +2,7 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
+            { text: "Marlin Timelapser", link: "https://github.com/umittadelen/marlinTimelapser"},
             { text: "Mrcpack<br>Viewer", link: "https://umittadelen.github.io/mrpackViewer/" },
             { text: "3D Tic-Tac-Toe", link: "https://umittadelen.github.io/3DTTT/" },
             { text: "Cursed Clocks (Arduino)", link: "https://github.com/umittadelen/cursed_clocks" },
