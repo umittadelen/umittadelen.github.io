@@ -2,7 +2,7 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
-            { text: "Image Upscaler", link: "https://github.com/umittadelen/imageUpscaler"},
+            { text: "Image Upscaler", link: "http://www.umittadelen.net/imageUpscaler/"},
             { text: "Marlin Timelapser", link: "https://github.com/umittadelen/marlinTimelapser"},
             { text: "Mrcpack<br>Viewer", link: "https://umittadelen.github.io/mrpackViewer/" },
             { text: "3D Tic-Tac-Toe", link: "https://umittadelen.github.io/3DTTT/" },
