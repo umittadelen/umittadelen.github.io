@@ -81,12 +81,17 @@ function createElements() {
             sub.textContent = "Have a question, project idea, or just want to say hi?";
             wrap.appendChild(sub);
 
-            const btn = document.createElement("button");
+            // Create hitbox wrapper
+            const hitbox = document.createElement("div");
+            hitbox.classList.add("contact-button-hitbox");
+
+            const btn = document.createElement("div");
             btn.classList.add("contact-btn");
             btn.innerHTML = '<i data-lucide="mail"></i><span>send me a mail</span>';
             btn.addEventListener("click", () => { window.location.href = section.elements[0].link; });
             if (typeof lucide !== "undefined") lucide.createIcons({ el: btn });
-            wrap.appendChild(btn);
+            hitbox.appendChild(btn);
+            wrap.appendChild(hitbox);
 
             sectionEl.appendChild(wrap);
 

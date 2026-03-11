@@ -557,10 +557,10 @@ svg#pointer {
     font-size: 0.95em;
     font-weight: 700;
     color: #fff;
-    cursor: pointer;
     letter-spacing: 0.5px;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
     transition: transform 0.2s, box-shadow 0.2s;
+    cursor: none;
 }
 
 .contact-btn svg {
@@ -570,7 +570,7 @@ svg#pointer {
     flex-shrink: 0;
 }
 
-.contact-btn:hover {
+.contact-button-hitbox:hover .contact-btn {
     transform: translateY(-3px);
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }

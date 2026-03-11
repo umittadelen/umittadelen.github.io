@@ -66,6 +66,31 @@ window.addEventListener("mousemove", (e) => {
     });
 });
 
+// Scale up centerCircle on hover for buttons and proj-card
+function scaleCursor(isScale) {
+    gsap.to(centerCircle, {
+        attr: { r: isScale ? 8 : 2 },
+        duration: 0.25,
+        ease: "power2.out"
+    });
+}
+
+function addCursorHoverListeners() {
+    // Buttons, proj-card, nav links
+    document.querySelectorAll("button, .proj-card, .site-nav a, nav a, a.nav-link, .contact-button-hitbox").forEach(el => {
+        el.addEventListener("mouseenter", () => {
+            scaleCursor(true);
+            el.style.cursor = "none";
+        });
+        el.addEventListener("mouseleave", () => {
+            scaleCursor(false);
+            el.style.cursor = "none";
+        });
+    });
+}
+
+window.addEventListener("DOMContentLoaded", addCursorHoverListeners);
+
 window.addEventListener("mouseout", hideCursor);
 window.addEventListener("pointerout", hideCursor);
 
