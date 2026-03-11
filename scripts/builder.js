@@ -2,40 +2,39 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
-            { text: "3D Maze Generator", link: "https://www.umittadelen.net/3DMazeGen/"},
-            { text: "Tetris", link: "https://www.umittadelen.net/TETRIS/"},
-            { text: "Github Chat", link: "https://www.umittadelen.net/githubChat"},
-            { text: "Image Upscaler", link: "http://www.umittadelen.net/imageUpscaler/"},
-            { text: "Marlin Timelapser", link: "https://github.com/umittadelen/marlinTimelapser"},
-            { text: "Mrcpack<br>Viewer", link: "https://umittadelen.github.io/mrpackViewer/" },
-            { text: "3D Tic-Tac-Toe", link: "https://umittadelen.github.io/3DTTT/" },
+            { text: "3D Maze Generator", link: "https://www.umittadelen.net/3DMazeGen/" },
+            { text: "Tetris", link: "https://www.umittadelen.net/TETRIS/" },
+            { text: "Github Chat", link: "https://www.umittadelen.net/githubChat/" },
+            { text: "Image Upscaler", link: "http://www.umittadelen.net/imageUpscaler/" },
+            { text: "Marlin Timelapser", link: "https://github.com/umittadelen/marlinTimelapser" },
+            { text: "Mrcpack<br>Viewer", link: "https://www.umittadelen.net/mrpackViewer/" },
+            { text: "3D Tic-Tac-Toe", link: "https://www.umittadelen.net/3DTTT/" },
             { text: "Cursed Clocks (Arduino)", link: "https://github.com/umittadelen/cursed_clocks" },
-            { text: "Arduino Video Renderer", link: "https://umittadelen.github.io/arduinoVideoRenderer/" },
-            { text: "Custom<br>Timer", link: "https://umittadelen.github.io/CustomTimer/" },
-            { text: "better<br>prompting", link: "https://umittadelen.github.io/better_prompting/" },
-            { text: "Text to image<br>prompt builder", link: "https://umittadelen.github.io/PromptBuilder/" },
+            { text: "Arduino Video Renderer", link: "https://www.umittadelen.net/arduinoVideoRenderer/" },
+            { text: "Custom<br>Timer", link: "https://www.umittadelen.net/CustomTimer/" },
+            { text: "better<br>prompting", link: "https://www.umittadelen.net/better_prompting/" },
+            { text: "Text to image<br>prompt builder", link: "https://www.umittadelen.net/PromptBuilder/" },
             { text: "chroma console<br>python package", link: "https://pypi.org/project/chromaconsole/" },
-            { text: "counter", link: "https://umittadelen.github.io/counter/" },
-            { text: "celebrate", link: "https://umittadelen.github.io/celebrate/" },
-            { text: "words", link: "https://umittadelen.github.io/words/" },
-            { text: "optifine tools", link: "https://umittadelen.github.io/optifinetools/" },
+            { text: "counter", link: "https://www.umittadelen.net/counter/" },
+            { text: "celebrate", link: "https://www.umittadelen.net/celebrate/" },
+            { text: "words", link: "https://www.umittadelen.net/words/" },
+            { text: "optifine tools", link: "https://www.umittadelen.net/optifinetools/" },
             { text: "<b>EasyUI</b><br>Image Generator", link: "https://github.com/umittadelen/stableDiffusionEasyUI" },
-            { text: "periodic table", link: "https://umittadelen.github.io/periodic-table/" },
-            { text: "Genetic Code<br>Calculator", link: "https://umittadelen.github.io/DenGenetiskeKoden/" },
-            { text: "clock", link: "https://umittadelen.github.io/clock/" }
+            { text: "periodic table", link: "https://www.umittadelen.net/periodic-table/" },
+            { text: "Genetic Code<br>Calculator", link: "https://www.umittadelen.net/DenGenetiskeKoden/" },
+            { text: "clock", link: "https://www.umittadelen.net/clock/" }
         ]
     },
     {
         header: "SOCIALS:",
         elements: [
-            { text: "github", link: "https://github.com/umittadelen" },
-            { text: "instagram", link: "https://www.instagram.com/umittadelen/" },
-            { text: "X", link: "https://twitter.com/umittadelenmc" },
-            { text: "twitch", link: "https://www.twitch.tv/umittadelen" },
-            { text: "linkedin", link: "https://www.linkedin.com/in/ümit-taşdelen-446881266/" },
-            { text: "bluesky", link: "https://umittadelen.bsky.social" },
-            { text: "discord", link: "", disabled: true },
-            { text: "youtube", link: "https://www.youtube.com/@umittadelen" },
+            { text: "github",    icon: "github",    link: "https://github.com/umittadelen" },
+            { text: "instagram", icon: "instagram", link: "https://www.instagram.com/umittadelen/" },
+            { text: "X",         icon: "twitter",   link: "https://twitter.com/umittadelenmc" },
+            { text: "twitch",    icon: "twitch",    link: "https://www.twitch.tv/umittadelen" },
+            { text: "linkedin",  icon: "linkedin",  link: "https://www.linkedin.com/in/umit-tasdelen/" },
+            { text: "bluesky",   icon: "cloud",     link: "https://umittadelen.bsky.social" },
+            { text: "youtube",   icon: "youtube",   link: "https://www.youtube.com/@umittadelen" },
         ]
     },
     {
@@ -46,169 +45,132 @@ const sections = [
     }
 ];
 
-function setupPreviewModal() {
-    const previewContainer = document.querySelector('.preview-container');
-    const iframeWrapper = previewContainer.querySelector('.iframe-wrapper');
-    const iframe = previewContainer.querySelector('iframe');
-    const closeBtn = previewContainer.querySelector('#close-button');
-
-    // Hide on load
-    previewContainer.style.display = 'none';
-    previewContainer.style.opacity = 0;
-    iframeWrapper.style.transform = 'scale(0.7)';
-
-    // Close modal helper
-    function closePreviewModal() {
-        gsap.to(iframeWrapper, {
-            duration: 0.5,
-            scale: 0.7,
-            ease: 'elastic.in(1, 0.5)'
-        });
-        gsap.to(previewContainer, {
-            duration: 0.3,
-            opacity: 0,
-            ease: 'power2.in',
-            onComplete: () => {
-                previewContainer.style.display = 'none';
-                iframe.src = '';
-            }
-        });
-    }
-
-    closeBtn.addEventListener('click', closePreviewModal);
-
-    // Close when clicking outside the iframe-wrapper
-    previewContainer.addEventListener('mousedown', (e) => {
-        if (e.target === previewContainer) {
-            closePreviewModal();
-        }
-    });
-
-    // Close on ESC key
-    document.addEventListener('keydown', (e) => {
-        if (previewContainer.style.display === 'flex' && (e.key === 'Escape' || e.key === 'Esc')) {
-            closePreviewModal();
-        }
-    });
-
-    // Expose a function to show the modal
-    window.showPreview = function (link) {
-        // Only preview .github.io links in the modal
-        if (/^https?:\/\/[^\/]+\.github\.io(\/|$)/i.test(link)) {
-            iframe.src = link;
-            previewContainer.style.display = 'flex';
-            previewContainer.style.backdropFilter = 'blur(5px)'; // Add blur
-            previewContainer.style.background = 'rgba(30, 30, 30, 0.35)'; // Subtle dark overlay
-            gsap.fromTo(previewContainer, {
-                opacity: 0,
-                filter: 'blur(5px)',
-                top: '-60px'
-            }, {
-                duration: 0.5,
-                opacity: 1,
-                filter: 'blur(0px)',
-                top: '0px',
-                ease: 'power3.out'
-            });
-            gsap.fromTo(iframeWrapper, {
-                scale: 0.6,
-                rotateY: 15,
-            }, {
-                duration: 0.8,
-                scale: 1,
-                rotateY: 0,
-                ease: 'elastic.out(1, 0.5)'
-            });
-        }
-    };
-}
-
 function createElements() {
-    setupPreviewModal(); // Use the static modal
-    console.log("Creating elements...");
     const body = document.getElementById("body");
 
     sections.forEach((section, sectionIndex) => {
-        // Add section header with an <hr> and <h1>
-        const hr = document.createElement("hr");
-        hr.classList.add("line");
-
-        const header = document.createElement("h1");
-        header.classList.add("center");
-        header.id = `header-${sectionIndex}`;
-        header.innerHTML = section.header;
-
-        if (sectionIndex === 0) {
-            header.innerHTML = `<span>` + section.header + `<br><span id="small-text">right-click to preview (if supported)</span></span>`;
+        // Thin separator line between sections
+        if (sectionIndex > 0) {
+            const sep = document.createElement("div");
+            sep.classList.add("section-sep");
+            body.appendChild(sep);
         }
 
-        body.appendChild(hr);
-        body.appendChild(header);
+        const sectionEl = document.createElement("section");
+        sectionEl.classList.add("page-section");
+        sectionEl.id = section.header.replace(":", "").trim().toLowerCase();
 
-        const myBody = document.createElement("div");
-        myBody.classList.add("my-body");
+        // Section heading
+        const heading = document.createElement("div");
+        heading.classList.add("section-heading");
 
-        section.elements.forEach((element, index) => {
-            // Create a card div
-            const card = document.createElement("div");
-            card.classList.add("card");
-            const cardHolder = document.createElement("div");
-            cardHolder.classList.add("card-holder");
-            card.setAttribute("id", `card-${sectionIndex}-${index}`);
-            cardHolder.setAttribute("id", `cardholder-${sectionIndex}-${index}`);
+        const h2 = document.createElement("h2");
+        h2.textContent = section.header.replace(":", "").trim().toLowerCase();
+        heading.appendChild(h2);
 
-            // handle disabled state
-            if (element.disabled) {
-                cardHolder.classList.add("disabled");
-            } else {
-                cardHolder.addEventListener("mouseenter", () => {
-                    gsap.killTweensOf(card); // cancel any existing animation on this card
-                    gsap.to(card, {
-                        duration: 0.6,
-                        ease: "elastic.out(2, 0.5)",
-                        x: -5,
-                        y: -5,
-                        boxShadow: "10px 10px 16px rgba(0, 0, 0, 0.3)"
+
+        sectionEl.appendChild(heading);
+
+        // ── CONTACT ──────────────────────────────────────────
+        if (sectionIndex === 2) {
+            const wrap = document.createElement("div");
+            wrap.classList.add("contact-cta-wrap");
+
+            const sub = document.createElement("p");
+            sub.classList.add("contact-subtext");
+            sub.textContent = "Have a question, project idea, or just want to say hi?";
+            wrap.appendChild(sub);
+
+            const btn = document.createElement("button");
+            btn.classList.add("contact-btn");
+            btn.innerHTML = '<i data-lucide="mail"></i><span>send me a mail</span>';
+            btn.addEventListener("click", () => { window.location.href = section.elements[0].link; });
+            if (typeof lucide !== "undefined") lucide.createIcons({ el: btn });
+            wrap.appendChild(btn);
+
+            sectionEl.appendChild(wrap);
+
+        // ── SOCIALS ──────────────────────────────────────────
+        } else if (sectionIndex === 1) {
+            const grid = document.createElement("div");
+            grid.classList.add("socials-grid");
+
+            section.elements.forEach((element) => {
+                const wrap = document.createElement("div");
+                wrap.classList.add("social-pill-wrap");
+                if (element.disabled) wrap.classList.add("disabled");
+
+                const pill = document.createElement("button");
+                pill.classList.add("social-pill");
+                const iconName = element.icon || "link";
+                pill.innerHTML = `<i data-lucide="${iconName}"></i><span>${element.text}</span>`;
+                if (typeof lucide !== "undefined") lucide.createIcons({ el: pill });
+
+                if (!element.disabled) {
+                    wrap.addEventListener("mouseenter", () => {
+                        gsap.killTweensOf(pill);
+                        gsap.to(pill, { duration: 0.4, ease: "power2.out", y: -3, scale: 1.04 });
                     });
-                });
-
-                cardHolder.addEventListener("mouseleave", () => {
-                    gsap.killTweensOf(card); // cancel ongoing tween
-                    gsap.to(card, {
-                        duration: 0.6,
-                        ease: "elastic.out(2, 0.5)",
-                        x: 0,
-                        y: 0,
-                        boxShadow: "5px 5px 16px rgba(0, 0, 0, 0.3)"
+                    wrap.addEventListener("mouseleave", () => {
+                        gsap.killTweensOf(pill);
+                        gsap.to(pill, { duration: 0.4, ease: "power2.out", y: 0, scale: 1 });
                     });
-                });
+                    pill.addEventListener("click", () => { window.location.href = element.link; });
+                }
 
-                cardHolder.addEventListener("click", () => {
-                    window.location.href = element.link;
-                });
+                wrap.appendChild(pill);
+                grid.appendChild(wrap);
+            });
 
-                cardHolder.addEventListener("contextmenu", (e) => {
-                    e.preventDefault();
-                    window.showPreview(element.link);
-                });
-            }
+            sectionEl.appendChild(grid);
 
-            // Create the inner centered text
-            const centerDiv = document.createElement("div");
-            centerDiv.classList.add("center");
-            const paragraph = document.createElement("p");
-            paragraph.innerHTML = element.text;
-            centerDiv.appendChild(paragraph);
+        // ── PROJECTS ─────────────────────────────────────────
+        } else {
+            const grid = document.createElement("div");
+            grid.classList.add("cards-grid");
 
-            // Append to the card
-            card.appendChild(centerDiv);
+            section.elements.forEach((element, index) => {
+                const wrap = document.createElement("div");
+                wrap.classList.add("proj-card-wrap");
+                wrap.id = `cardholder-${sectionIndex}-${index}`;
+                if (element.disabled) wrap.classList.add("disabled");
 
-            cardHolder.appendChild(card);
+                const card = document.createElement("div");
+                card.classList.add("proj-card");
+                card.id = `card-${sectionIndex}-${index}`;
 
-            myBody.appendChild(cardHolder);
-        });
+                const p = document.createElement("p");
+                p.innerHTML = element.text;
+                card.appendChild(p);
 
-        body.appendChild(myBody);
+                const arrow = document.createElement("span");
+                arrow.classList.add("card-arrow");
+                arrow.innerHTML = '<i data-lucide="arrow-up-right"></i>';
+                card.appendChild(arrow);
+                if (typeof lucide !== "undefined") lucide.createIcons({ el: arrow });
+
+                if (!element.disabled) {
+                    wrap.addEventListener("mouseenter", () => {
+                        gsap.killTweensOf(card);
+                        gsap.to(card, { duration: 0.5, ease: "elastic.out(1.5, 0.5)", y: -5, scale: 1.02 });
+                        card.classList.add("hovered");
+                    });
+                    wrap.addEventListener("mouseleave", () => {
+                        gsap.killTweensOf(card);
+                        gsap.to(card, { duration: 0.5, ease: "elastic.out(1.5, 0.5)", y: 0, scale: 1 });
+                        card.classList.remove("hovered");
+                    });
+                    wrap.addEventListener("click", () => { window.location.href = element.link; });
+                }
+
+                wrap.appendChild(card);
+                grid.appendChild(wrap);
+            });
+
+            sectionEl.appendChild(grid);
+        }
+
+        body.appendChild(sectionEl);
     });
 }
 

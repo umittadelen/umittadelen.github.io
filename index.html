@@ -5,38 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>umittadelen</title>
-
     <link rel="icon" href="./icon/favicon.ico" type="image/x-icon">
     <link id="stylesheet" rel="stylesheet" href="./styles.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 
-<body id="body">
-    <div class="preview-container">
-        <div class="iframe-wrapper">
-            <iframe src="https://umittadelen.github.io/mrpackViewer/"></iframe>
-            <a id="close-button">Close</a>
-        </div>
-    </div>
+<body>
 
+    <!-- Custom cursor -->
     <svg id="pointer"></svg>
-    <div id="about-section"></div>
-    <div id="body"></div>
 
+    <!-- Scrollbar -->
     <div class="scrollbar">
         <div class="thumb" id="scroll-thumb"></div>
     </div>
+
+    <!-- Navigation -->
+    <nav class="site-nav" id="site-nav">
+        <div class="nav-links">
+            <a href="#projects">projects</a>
+            <a href="#socials">socials</a>
+            <a href="#contact">contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
+        <div id="about-section"></div>
+        <div class="scroll-cue">
+            <span>scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Sections built by builder.js -->
+    <main id="body"></main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 
     <script>
-        const BODY = document.getElementById("body");
-        BODY.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
+        window.addEventListener("scroll", () => {
+            // pill nav no longer needs scroll class
         });
     </script>
 
@@ -45,6 +58,47 @@
     <script src="./scripts/cursor.js"></script>
     <script src="./scripts/scrollbar.js"></script>
     <script src="./scripts/favicon.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof lucide !== "undefined") lucide.createIcons();
+
+            // Liquid sliding nav indicator
+            const navLinks = document.querySelector('.nav-links');
+            const links = Array.from(navLinks.querySelectorAll('a'));
+            const indicator = document.createElement('div');
+            indicator.className = 'nav-indicator';
+            navLinks.prepend(indicator);
+            gsap.set(indicator, { opacity: 0 });
+
+            let visible = false;
+
+            function moveTo(link) {
+                const navRect = navLinks.getBoundingClientRect();
+                const linkRect = link.getBoundingClientRect();
+                const x = linkRect.left - navRect.left;
+                const w = linkRect.width;
+                if (!visible) {
+                    gsap.set(indicator, { x, width: w });
+                    gsap.to(indicator, { opacity: 1, duration: 0.12 });
+                    visible = true;
+                } else {
+                    gsap.to(indicator, {
+                        x, width: w,
+                        duration: 0.6,
+                        ease: 'elastic.out(1, 0.62)',
+                        overwrite: true
+                    });
+                    gsap.to(indicator, { opacity: 1, duration: 0.1, overwrite: false });
+                }
+            }
+
+            links.forEach(link => link.addEventListener('mouseenter', () => moveTo(link)));
+            navLinks.addEventListener('mouseleave', () => {
+                gsap.to(indicator, { opacity: 0, duration: 0.2, overwrite: true });
+                visible = false;
+            });
+        });
+    </script>
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5340331733632234" crossorigin="anonymous"></script>
 </body>
