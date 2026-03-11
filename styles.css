@@ -322,6 +322,8 @@ svg#pointer {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    justify-content: center;
+    align-items: center;
 }
 
 .badge {
