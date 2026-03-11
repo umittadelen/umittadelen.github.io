@@ -127,25 +127,29 @@ async function addPawsToBackground() {
         tries++;
     }
 
-    // Mouse parallax effect
-    const parallaxHandler = function(e) {
-        const mx = (e.clientX || (e.touches && e.touches[0].clientX) || width/2);
-        const my = (e.clientY || (e.touches && e.touches[0].clientY) || height/2);
+    // Mouse parallax effect (smooth with requestAnimationFrame)
+    let mouseX = width / 2;
+    let mouseY = height / 2;
+    function updateParallax() {
         window.pawParallax.forEach(paw => {
-            const offsetX = (mx / width - 0.5) * 40 * paw.depth;
-            const offsetY = (my / height - 0.5) * 40 * paw.depth;
+            const offsetX = (mouseX / width - 0.5) * 40 * paw.depth;
+            const offsetY = (mouseY / height - 0.5) * 40 * paw.depth;
             paw.elem.style.left = `${paw.left + offsetX}px`;
             paw.elem.style.top = `${paw.top + offsetY}px`;
-            // Scale up paw if mouse is near
-            const pawCenterX = paw.left + paw.elem.offsetWidth / 2;
-            const pawCenterY = paw.top + paw.elem.offsetHeight / 2;
-            const dist = Math.sqrt((mx - pawCenterX) ** 2 + (my - pawCenterY) ** 2);
-            const scale = dist < 120 ? SCALE_UP_FACTOR - (dist / 120) * (SCALE_UP_FACTOR - 1) : 1;
-            paw.elem.style.transform = paw.elem.style.transform.replace(/scale\([^)]+\)/, '') + ` scale(${scale})`;
         });
-    };
-    document.addEventListener('mousemove', parallaxHandler);
-    document.addEventListener('touchmove', parallaxHandler);
+        requestAnimationFrame(updateParallax);
+    }
+    document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    document.addEventListener('touchmove', e => {
+        if (e.touches && e.touches[0]) {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }
+    });
+    updateParallax();
 
     // Resize handling
     let prevWidth = width;
