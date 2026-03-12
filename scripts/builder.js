@@ -28,13 +28,13 @@ const sections = [
     {
         header: "SOCIALS:",
         elements: [
-            { text: "github",    icon: "github",    link: "https://github.com/umittadelen" },
-            { text: "instagram", icon: "instagram", link: "https://www.instagram.com/umittadelen/" },
-            { text: "X",         icon: "twitter",   link: "https://twitter.com/umittadelenmc" },
-            { text: "twitch",    icon: "twitch",    link: "https://www.twitch.tv/umittadelen" },
-            { text: "linkedin",  icon: "linkedin",  link: "https://www.linkedin.com/in/umit-tasdelen/" },
-            { text: "bluesky",   icon: "cloud",     link: "https://umittadelen.bsky.social" },
-            { text: "youtube",   icon: "youtube",   link: "https://www.youtube.com/@umittadelen" },
+            { text: "GitHub",    icon: "github",    link: "https://github.com/umittadelen" },
+            { text: "Instagram", icon: "instagram", link: "https://www.instagram.com/umittadelen/" },
+            { text: "Twitter",   icon: "twitter",   link: "https://twitter.com/umittadelenmc" },
+            { text: "Twitch",    icon: "twitch",    link: "https://www.twitch.tv/umittadelen" },
+            { text: "LinkedIn",  icon: "linkedin",  link: "https://www.linkedin.com/in/umit-tasdelen/" },
+            { text: "Bluesky",   icon: "cloud",     link: "https://umittadelen.bsky.social" },
+            { text: "YouTube",   icon: "youtube",   link: "https://www.youtube.com/@umittadelen" },
         ]
     },
     {

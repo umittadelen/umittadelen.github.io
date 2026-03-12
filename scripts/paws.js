@@ -7,7 +7,6 @@ const PAW_MIN_SIZE = 32; // px
 const PAW_MAX_SIZE = 96; // px
 const PAW_OPACITY_MIN = 0.03;
 const PAW_OPACITY_MAX = 0.07;
-const SCALE_UP_FACTOR = 1.1;
 
 function loadSVG(url) {
     return fetch(url).then(r => r.text());
