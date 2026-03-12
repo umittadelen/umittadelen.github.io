@@ -10,6 +10,8 @@
     <link id="stylesheet" rel="stylesheet" href="./styles.css">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="./scripts/paws.js"></script>
+    <!-- Preload disable zoom script to block zoom before page load -->
+    <script src="./scripts/disable-zoom.js"></script>
 
     <meta name="description" content="umittadelen's personal website showcasing projects, social media, and contact information.">
     <meta name="keywords" content="umittadelen, developer, programming, creative coding, projects, web development, social media, contact, game development">
@@ -29,7 +31,6 @@
 </head>
 
 <body>
-
     <!-- Custom cursor -->
     <svg id="pointer"></svg>
 
@@ -49,6 +50,7 @@
 
     <!-- Hero -->
     <section class="hero-section">
+        <canvas id="paws-canvas"></canvas>
         <div class="hero-orb orb-1"></div>
         <div class="hero-orb orb-2"></div>
         <div class="hero-orb orb-3"></div>
