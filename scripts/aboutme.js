@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
       <h1 class="hero-name">umit<span class="accent">tadelen</span></h1>
 
       <div class="hero-bio-strip">
-        <span class="bio-chip"><i data-lucide="user-round"></i><span>he/him</span></span>
+        <span class="bio-chip"><i data-feather="user"></i><span>he/him</span></span>
         <span class="bio-chip-dot"></span>
-        <span class="bio-chip"><i data-lucide="cake-slice"></i><span>${age} y/o</span></span>
+        <span class="bio-chip"><i data-feather="gift"></i><span>${age} y/o</span></span>
         <span class="bio-chip-dot"></span>
-        <span class="bio-chip"><i data-lucide="map-pin"></i><span>Oslo, Norway</span></span>
+        <span class="bio-chip"><i data-feather="map-pin"></i><span>Oslo, Norway</span></span>
       </div>
 
       <div class="hero-panels">
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  if (typeof lucide !== "undefined") lucide.createIcons();
+  if (typeof feather !== "undefined") feather.replace();
 
   // Animate panels in
   if (typeof gsap !== "undefined") {

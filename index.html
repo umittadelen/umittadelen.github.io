@@ -8,7 +8,7 @@
     <link rel="icon" href="./icon/favicon.ico" type="image/x-icon">
     <link rel="preload" href="./fonts/Quicksand.ttf" as="font" type="font/ttf" crossorigin="anonymous">
     <link id="stylesheet" rel="stylesheet" href="./styles.css">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <script src="./scripts/paws.js"></script>
     <!-- Preload disable zoom script to block zoom before page load -->
     <script src="./scripts/disable-zoom.js"></script>
@@ -74,15 +74,17 @@
     <script src="./scripts/favicon.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            if (typeof lucide !== "undefined") lucide.createIcons();
+            if (typeof feather !== "undefined") feather.replace();
 
             // Liquid sliding nav indicator
             const navLinks = document.querySelector('.nav-links');
             const links = Array.from(navLinks.querySelectorAll('a'));
             const indicator = document.createElement('div');
+
             indicator.className = 'nav-indicator';
             navLinks.prepend(indicator);
             gsap.set(indicator, { opacity: 0 });
+            if (typeof feather !== "undefined") feather.replace();
 
             let visible = false;
 
