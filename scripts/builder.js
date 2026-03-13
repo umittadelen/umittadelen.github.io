@@ -87,9 +87,9 @@ function createElements() {
 
             const btn = document.createElement("div");
             btn.classList.add("contact-btn");
-            btn.innerHTML = '<i data-lucide="mail"></i><span>send me a mail</span>';
+            btn.innerHTML = '<i data-feather="mail"></i><span>send me a mail</span>';
             btn.addEventListener("click", () => { window.location.href = section.elements[0].link; });
-            if (typeof lucide !== "undefined") lucide.createIcons({ el: btn });
+            if (typeof feather !== "undefined") feather.replace({ parent: btn });
             hitbox.appendChild(btn);
             wrap.appendChild(hitbox);
 
@@ -108,8 +108,8 @@ function createElements() {
                 const pill = document.createElement("button");
                 pill.classList.add("social-pill");
                 const iconName = element.icon || "link";
-                pill.innerHTML = `<i data-lucide="${iconName}"></i><span>${element.text}</span>`;
-                if (typeof lucide !== "undefined") lucide.createIcons({ el: pill });
+                pill.innerHTML = `<i data-feather="${iconName}"></i><span>${element.text}</span>`;
+                if (typeof feather !== "undefined") feather.replace({ parent: pill });
 
                 if (!element.disabled) {
                     wrap.addEventListener("mouseenter", () => {
@@ -150,9 +150,9 @@ function createElements() {
 
                 const arrow = document.createElement("span");
                 arrow.classList.add("card-arrow");
-                arrow.innerHTML = '<i data-lucide="arrow-up-right"></i>';
+                arrow.innerHTML = '<i data-feather="arrow-up-right"></i>';
                 card.appendChild(arrow);
-                if (typeof lucide !== "undefined") lucide.createIcons({ el: arrow });
+                if (typeof feather !== "undefined") feather.replace({ parent: arrow });
 
                 if (!element.disabled) {
                     wrap.addEventListener("mouseenter", () => {
@@ -179,6 +179,118 @@ function createElements() {
     });
 }
 
+// Add this to the end of builder.js or in a script tag
 document.addEventListener("DOMContentLoaded", () => {
     createElements();
+    
+    // Only initialize horizontal scroll on PC
+    if (window.innerWidth >= 1024) {
+        initHorizontalScroll();
+    }
+});
+
+function initHorizontalScroll() {
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+    // FIX: Makes scrolling consistent across different browsers/mice
+    ScrollTrigger.normalizeScroll(true);
+
+    const sections = gsap.utils.toArray(".page-section");
+    const body = document.getElementById("body");
+
+    // 1. Setup the Horizontal Scroll
+    let scrollTween = gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+            trigger: "#body",
+            pin: true,
+            scrub: 0.5, // Lowering this slightly (from 1) makes it feel more responsive
+            anticipatePin: 1, // FIX: Crucial for preventing the "jump" at the start
+            start: "top top",
+            // Calculation for total scroll length
+            end: () => "+=" + (sections.length * window.innerWidth),
+            invalidateOnRefresh: true,
+        }
+    });
+
+    // 2. Fix Navigation Links (Targeting specific horizontal positions)
+    const navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href");
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                const index = sections.indexOf(targetSection);
+                const st = scrollTween.scrollTrigger;
+                
+                // Calculate exactly where this section is on the vertical scrollbar
+                const totalDist = st.end - st.start;
+                const sectionPos = st.start + (index * (totalDist / (sections.length - 1)));
+
+                gsap.to(window, {
+                    scrollTo: { y: sectionPos, autoKill: false },
+                    duration: 1.2,
+                    ease: "power3.inOut"
+                });
+            }
+                    // Remove hash from URL after navigation
+                    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+        });
+    });
+
+    // FIX: Refresh ScrollTrigger after a short delay to ensure layout is final
+    window.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const outer = document.getElementById("h-scroll-outer");
+    const body  = document.getElementById("body");
+
+    let isDesktop = window.innerWidth > 1024;
+    let scrollListener = null;
+
+    function enable() {
+        function setOuterHeight() {
+            const scrollWidth = body.scrollWidth - window.innerWidth;
+            outer.style.height = `${window.innerHeight + scrollWidth}px`;
+        }
+
+        setOuterHeight();
+        window.addEventListener("resize", setOuterHeight);
+
+        scrollListener = () => {
+            const outerTop = outer.getBoundingClientRect().top;
+            const progress = Math.max(0, -outerTop);
+            body.style.transform = `translateX(-${progress}px)`;
+        };
+
+        window.addEventListener("scroll", scrollListener, { passive: true });
+    }
+
+    function disable() {
+        outer.style.height = "";
+        body.style.transform = "";
+        if (scrollListener) {
+            window.removeEventListener("scroll", scrollListener);
+            scrollListener = null;
+        }
+    }
+
+    if (isDesktop) enable();
+
+    window.addEventListener("resize", () => {
+        const nowDesktop = window.innerWidth > 1024;
+        if (nowDesktop && !isDesktop) {
+            isDesktop = true;
+            enable();
+        } else if (!nowDesktop && isDesktop) {
+            isDesktop = false;
+            disable();
+        }
+    });
 });
