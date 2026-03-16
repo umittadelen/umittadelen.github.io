@@ -70,7 +70,6 @@ body::after {
     will-change: opacity;
 }
 
-
 /* ===== CUSTOM CURSOR ===== */
 
 svg#pointer {
@@ -398,6 +397,7 @@ svg#pointer {
 
 .page-section {
     width: 100%;
+    min-width: 100vw;
     max-width: 1160px;
     margin: 0 auto;
     padding: 80px 48px 20px;
