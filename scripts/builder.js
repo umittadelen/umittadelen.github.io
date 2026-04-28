@@ -2,9 +2,9 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
+            { text: "3D Maze Generator", link: "https://www.umittadelen.net/3DMazeGen/" },
             { text: "Triangle Calculator", link: "https://www.umittadelen.net/tricalc/" },
             { text: "Tetris", link: "https://www.umittadelen.net/TETRIS/" },
-            { text: "3D Maze Generator", link: "https://www.umittadelen.net/3DMazeGen/" },
             { text: "Github Chat", link: "https://www.umittadelen.net/githubChat/" },
             { text: "Image Upscaler", link: "http://www.umittadelen.net/imageUpscaler/" },
             { text: "Marlin Timelapser", link: "https://github.com/umittadelen/marlinTimelapser" },
@@ -36,6 +36,7 @@ const sections = [
             { text: "LinkedIn",  icon: "linkedin",  link: "https://www.linkedin.com/in/umit-tasdelen/" },
             { text: "Bluesky",   icon: "cloud",     link: "https://umittadelen.bsky.social" },
             { text: "YouTube",   icon: "youtube",   link: "https://www.youtube.com/@umittadelen" },
+            { text: "Ko-fi",     icon: "coffee",    link: "https://ko-fi.com/umittadelen" }
         ]
     },
     {
@@ -194,7 +195,8 @@ function initHorizontalScroll() {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     // FIX: Makes scrolling consistent across different browsers/mice
-    ScrollTrigger.normalizeScroll(true);
+    // Ignore inner-scrollable elements so their own scroll isn't hijacked
+    ScrollTrigger.normalizeScroll({ ignore: ".cards-grid" });
 
     const sections = gsap.utils.toArray(".page-section");
     const body = document.getElementById("body");
