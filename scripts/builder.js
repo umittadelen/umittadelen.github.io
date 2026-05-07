@@ -2,6 +2,7 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
+            { text: "Wireframe Cube Renderer", link: "https://www.umittadelen.net/wireframeRender/" },
             { text: "3D Maze Generator", link: "https://www.umittadelen.net/3DMazeGen/" },
             { text: "Triangle Calculator", link: "https://www.umittadelen.net/tricalc/" },
             { text: "Tetris", link: "https://www.umittadelen.net/TETRIS/" },
