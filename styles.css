@@ -24,7 +24,7 @@
     --text:           oklch(98.5% 0.01 328.5);
     --text-muted:     oklch(98.5% 0.01 328.5 / 65%);
     --text-sub:       oklch(98.5% 0.01 328.5 / 88%);
-    --accent-a:       oklch(70% 0.27 328.5);
+    --accent-a:       oklch(70% 0.34 328.5);
     --accent-b:       oklch(78% 0.22 55);
     --accent-grad:    linear-gradient(in oklch 135deg, oklch(70% 0.27 328.5) 0%, oklch(78% 0.22 55) 100%);
     --radius-card:    20px;
