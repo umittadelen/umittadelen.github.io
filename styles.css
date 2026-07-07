@@ -66,7 +66,7 @@ body::after {
     height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.035'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     pointer-events: none;
-    z-index: 99998;
+    z-index: 1;
     will-change: opacity;
 }
 
@@ -95,7 +95,7 @@ svg#pointer {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .nav-links {
@@ -116,6 +116,8 @@ svg#pointer {
         0 0 50px oklch(70% 0.27 328.5 / 12%),
         inset 0 1px 0 oklch(100% 0 0 / 12%),
         inset 0 -1px 0 oklch(20% 0 0 / 20%);
+
+    transform: translateZ(0); /* Force hardware acceleration */
 }
 
 .nav-links::before {
