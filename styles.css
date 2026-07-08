@@ -37,7 +37,7 @@
     --accent-a:       oklch(70% 0.34 328.5);
     --accent-b:       oklch(78% 0.22 55);
     --accent-grad:      linear-gradient(in oklch 135deg, var(--accent-a) 0%, var(--accent-b) 100%), var(--noise);
-    --contact-btn-grad: linear-gradient(in oklch 135deg, var(--accent-a) 0%, var(--accent-b) 50%, var(--accent-a) 100%), var(--noise);
+    --contact-btn-grad: linear-gradient(in oklch 135deg, var(--accent-a) 0%, var(--accent-b) 45%, var(--accent-b) 55%, var(--accent-a) 100%), var(--noise);
 
     --nav-links-bg:     oklch(22% 0.04 328.5 / 45%);
     --nav-links-border: oklch(70% 0.27 328.5 / 20%);
@@ -697,6 +697,7 @@ svg#pointer {
     letter-spacing: 0.5px;
     box-shadow: var(--contact-btn-shadow);
     transition: all 0.2s;
+    transition: background-position 0.3 ease-in-out;
     cursor: none;
 }
 

@@ -1,12 +1,12 @@
 const PAW_CONFIG = {
     src: './icon/paw.svg',
-    count: 20,
-    minSize: 45,
+    count: 25,
+    minSize: 70,
     maxSize: 90,
-    opacityMin: 0.06,
+    opacityMin: 0.04,
     opacityMax: 0.08,
     parallaxStrength: 40.0,
-    minDistBetween: 60 // Minimum pixels between paw centers
+    minDistBetween: 70 // Minimum pixels between paw centers
 };
 
 // --- Placement Helpers (Restored from your original code) ---
