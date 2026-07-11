@@ -673,7 +673,7 @@ svg#pointer {
 }
 
 .contact-subtext {
-    font-family: var(--proj-card-font-family);
+    font-family: var(--proj-card-font-family), var(--font-family);
     font-size: 1.1em;
     color: var(--text-muted);
     font-weight: 400;
