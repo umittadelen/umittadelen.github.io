@@ -2,6 +2,8 @@ const sections = [
     {
         header: "PROJECTS:",
         elements: [
+            { text: "Xaero's Portal Locater", link: "https://github.com/umittadelen/xaerosportallocater"},
+            { text: "Heartopia Painting Helper", link: "https://www.umittadelen.net/heartopia-helper/"},
             { text: "Image Vectorizer", link: "https://www.umittadelen.net/vectorizer/" },
             { text: "Wireframe Cube Renderer", link: "https://www.umittadelen.net/wireframeRender/" },
             { text: "3D Maze Generator", link: "https://www.umittadelen.net/3DMazeGen/" },
