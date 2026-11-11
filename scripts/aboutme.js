@@ -1,3 +1,40 @@
+const panels = [
+  {
+    label: "i code in",
+    badges: [
+      { text: "Python",     link: "https://www.python.org/" },
+      { text: "HTML",       link: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+      { text: "CSS",        link: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+      { text: "JavaScript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      { text: "Java",       link: "https://dev.java/" },
+      { text: "C++",        link: "https://isocpp.org/" },
+      { text: "C#",         link: "https://learn.microsoft.com/en-us/dotnet/csharp/" }
+    ]
+  },
+  {
+    label: "i'm playing",
+    badges: [
+      { text: "Arknights", link: "https://www.arknights.global/" },
+      { text: "Endfield",  link: "https://endfield.gryphline.com/" },
+      { text: "PJSK",      link: "https://www.colorfulstage.com/" },
+      { text: "WUWA",      link: "https://wutheringwaves.kurogames.com/" }
+    ]
+  },
+  {
+    label: "i also do",
+    badges: [
+      { text: "3D & Robotics",    link: "https://www.instagram.com/umittadelen/" },
+      { text: "Content Creation", link: "" },
+      { text: "Game Dev",         link: "" }
+    ]
+  }
+];
+
+function badgeHTML(b) {
+  if (!b.link) return `<span class="badge">${b.text}</span>`;
+  return `<a class="badge" href="${b.link}" target="_blank" rel="noopener">${b.text}</a>`;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const age = new Date().getFullYear() - 2008;
 
@@ -16,43 +53,19 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
 
       <div class="hero-panels">
+        ${panels.map(p => `
         <div class="hero-panel">
-          <p class="panel-label">tech stack</p>
+          <p class="panel-label">${p.label}</p>
           <div class="panel-badges">
-            <span class="badge">Python</span>
-            <span class="badge">HTML</span>
-            <span class="badge">CSS</span>
-            <span class="badge">JavaScript</span>
-            <span class="badge">Java</span>
-            <span class="badge">C++</span>
-            <span class="badge">C#</span>
+            ${p.badges.map(badgeHTML).join("\n            ")}
           </div>
-        </div>
-        <div class="hero-panel">
-          <p class="panel-label">currently playing</p>
-          <div class="panel-badges">
-            <span class="badge">Arknights</span>
-            <span class="badge">Endfield</span>
-            <span class="badge">Endfield</span>
-            <span class="badge">PJSK</span>
-            <span class="badge">WUWA</span>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <p class="panel-label">also does</p>
-          <div class="panel-badges">
-            <span class="badge">3D Design</span>
-            <span class="badge">Content Creation</span>
-            <span class="badge">Game Dev</span>
-          </div>
-        </div>
+        </div>`).join("")}
       </div>
     </div>
   `;
 
   if (typeof feather !== "undefined") feather.replace();
 
-  // Animate panels in
   if (typeof gsap !== "undefined") {
     gsap.from(".hero-bio-strip", { y: 16, opacity: 0, duration: 0.5, delay: 0.15, ease: "power2.out" });
     gsap.from(".hero-panel", { y: 24, opacity: 0, duration: 0.55, ease: "power2.out", stagger: 0.1, delay: 0.3 });

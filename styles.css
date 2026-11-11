@@ -66,8 +66,6 @@
     --proj-card-hover-border: oklch(70% 0.27 328.5 / 45%);
     --proj-card-hover-shadow: 0 0 38px oklch(70% 0.27 328.5 / 20%), inset 0 1px 0 oklch(100% 0 0 / 6%);
 
-    --proj-card-font-family: "ＭＳ Ｐゴシック"; /*all MSP*/
-
     --social-pill-hover-border: oklch(70% 0.27 328.5 / 50%);
     --social-pill-hover-shadow: 0 0 28px oklch(70% 0.27 328.5 / 20%);
 
@@ -213,6 +211,7 @@ svg#pointer {
     padding: 8px 20px;
     border-radius: 100px;
     transition: color 0.2s;
+    font-family: inherit;
 }
 
 .nav-links a:hover {
@@ -296,7 +295,7 @@ svg#pointer {
 }
 
 .hero-eyebrow {
-    font-size: 0.78em;
+    font-size: 1em;
     font-weight: 500;
     color: var(--text-muted);
     letter-spacing: 5px;
@@ -410,6 +409,11 @@ svg#pointer {
 .badge:hover {
     border-color: var(--badge-hover-border);
     color: var(--text);
+}
+
+a.badge {
+    text-decoration: none;
+    cursor: none;
 }
 
 .scroll-cue {
@@ -606,7 +610,7 @@ svg#pointer {
 }
 
 .proj-card p {
-    font-family: var(--proj-card-font-family), var(--font-family);
+    font-family: var(--font-family);
     font-size: 0.9em;
     font-weight: 500;
     color: var(--text);
@@ -673,7 +677,7 @@ svg#pointer {
 }
 
 .contact-subtext {
-    font-family: var(--proj-card-font-family), var(--font-family);
+    font-family: var(--font-family);
     font-size: 1.1em;
     color: var(--text-muted);
     font-weight: 400;
