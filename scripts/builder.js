@@ -53,6 +53,7 @@ const sections = [
 
 function createElements() {
     const body = document.getElementById("body");
+    body.style.setProperty("--section-count", sections.length);
 
     sections.forEach((section, sectionIndex) => {
         // Thin separator line between sections
@@ -185,71 +186,54 @@ function createElements() {
     });
 }
 
-// Add this to the end of builder.js or in a script tag
+const HORIZONTAL = "(min-width: 1024px) and (pointer: fine)";
+let scrollTween = null;
+
 document.addEventListener("DOMContentLoaded", () => {
     createElements();
-    
-    // Only initialize horizontal scroll on PC
-    if (window.innerWidth >= 1024) {
-        initHorizontalScroll();
-    }
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    initNavLinks();
+
+    gsap.matchMedia().add(HORIZONTAL, () => {
+        const sections = gsap.utils.toArray(".page-section");
+
+        scrollTween = gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#body",
+                pin: true,
+                scrub: 0.5,
+                anticipatePin: 1,
+                start: "top top",
+                end: () => "+=" + (sections.length * window.innerWidth),
+                invalidateOnRefresh: true,
+            }
+        });
+
+        return () => { scrollTween = null; };
+    });
+
+    window.addEventListener("load", () => ScrollTrigger.refresh());
 });
 
-function initHorizontalScroll() {
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-    // FIX: Makes scrolling consistent across different browsers/mice
-    // Ignore inner-scrollable elements so their own scroll isn't hijacked
-    ScrollTrigger.normalizeScroll({ ignore: ".cards-grid" });
-
-    const sections = gsap.utils.toArray(".page-section");
-    const body = document.getElementById("body");
-
-    // 1. Setup the Horizontal Scroll
-    let scrollTween = gsap.to(sections, {
-        xPercent: -100 * (sections.length - 1),
-        ease: "none",
-        scrollTrigger: {
-            trigger: "#body",
-            pin: true,
-            scrub: 0.5, // Lowering this slightly (from 1) makes it feel more responsive
-            anticipatePin: 1, // FIX: Crucial for preventing the "jump" at the start
-            start: "top top",
-            // Calculation for total scroll length
-            end: () => "+=" + (sections.length * window.innerWidth),
-            invalidateOnRefresh: true,
-        }
-    });
-
-    // 2. Fix Navigation Links (Targeting specific horizontal positions)
-    const navLinks = document.querySelectorAll(".nav-links a");
-    navLinks.forEach((link) => {
+function initNavLinks() {
+    document.querySelectorAll(".nav-links a").forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-            const targetId = link.getAttribute("href");
-            const targetSection = document.querySelector(targetId);
+            const target = document.querySelector(link.getAttribute("href"));
+            if (!target) return;
 
-            if (targetSection) {
-                const index = sections.indexOf(targetSection);
+            let y;
+            if (scrollTween) {
+                const sections = gsap.utils.toArray(".page-section");
                 const st = scrollTween.scrollTrigger;
-                
-                // Calculate exactly where this section is on the vertical scrollbar
-                const totalDist = st.end - st.start;
-                const sectionPos = st.start + (index * (totalDist / (sections.length - 1)));
-
-                gsap.to(window, {
-                    scrollTo: { y: sectionPos, autoKill: false },
-                    duration: 1.2,
-                    ease: "power3.inOut"
-                });
+                y = st.start + sections.indexOf(target) * ((st.end - st.start) / (sections.length - 1));
+            } else {
+                y = target.getBoundingClientRect().top + window.scrollY - 80;
             }
-                    // Remove hash from URL after navigation
-                    history.replaceState(null, document.title, window.location.pathname + window.location.search);
-        });
-    });
 
-    // FIX: Refresh ScrollTrigger after a short delay to ensure layout is final
-    window.addEventListener("load", () => {
-        ScrollTrigger.refresh();
+            gsap.to(window, { scrollTo: { y, autoKill: false }, duration: 1.2, ease: "power3.inOut" });
+        });
     });
 }
