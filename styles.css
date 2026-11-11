@@ -295,7 +295,7 @@ svg#pointer {
 }
 
 .hero-eyebrow {
-    font-size: 1em;
+    font-size: 0.78em;
     font-weight: 500;
     color: var(--text-muted);
     letter-spacing: 5px;
@@ -414,6 +414,12 @@ svg#pointer {
 a.badge {
     text-decoration: none;
     cursor: none;
+}
+
+a.badge::after {
+    content: "↗";
+    margin-left: 3px;
+    opacity: 0.6;
 }
 
 .scroll-cue {
