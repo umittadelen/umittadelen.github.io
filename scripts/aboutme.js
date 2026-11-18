@@ -14,10 +14,12 @@ const panels = [
   {
     label: "i'm playing",
     badges: [
-      { text: "Arknights", link: "https://www.arknights.global/" },
-      { text: "Endfield",  link: "https://endfield.gryphline.com/" },
-      { text: "PJSK",      link: "https://www.colorfulstage.com/" },
-      { text: "WUWA",      link: "https://wutheringwaves.kurogames.com/" }
+      { text: "Purrjury",   link: "https://purrjury.com/" },
+      { text: "Arknights",  link: "https://www.arknights.global/" },
+      { text: "Endfield",   link: "https://endfield.gryphline.com/" },
+      { text: "PJSK",       link: "https://www.colorfulstage.com/" },
+      { text: "WUWA",       link: "https://wutheringwaves.kurogames.com/" },
+      { text: "HoloDreams", link: "https://www.hololive-dreams.com/en" }
     ]
   },
   {
